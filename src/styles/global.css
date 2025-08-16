@@ -1,0 +1,24 @@
+@import "tailwindcss";
+@config "../../tailwind.config.js";
+
+@theme {
+  --color-medical-primary: #0066cc;
+  --color-medical-secondary: #00aa88;
+  --color-medical-accent: #ff6b6b;
+}
+
+@layer base {
+  body {
+    @apply antialiased;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-4 py-2 bg-medical-primary text-white rounded-lg hover:bg-blue-700 transition-colors;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-md p-6;
+  }
+}

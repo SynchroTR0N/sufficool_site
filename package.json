@@ -2,35 +2,66 @@
   "name": "sufficool_site",
   "version": "1.0.0",
   "private": true,
-  "description": "sufficool_site",
+  "description": "Dr. Daniel Sufficool Medical Education Platform",
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "medical",
+    "education",
+    "cancer",
+    "treatment"
   ],
   "scripts": {
-    "develop": "gatsby develop",
-    "start": "gatsby develop",
+    "develop": "dotenv -e .env -- gatsby develop -p $PORT",
+    "dev": "dotenv -e .env -- gatsby develop -p $PORT",
+    "start": "dotenv -e .env -- gatsby develop -p $PORT",
     "build": "gatsby build",
-    "serve": "gatsby serve",
+    "serve": "dotenv -e .env -- gatsby serve -p $PORT",
     "clean": "gatsby clean",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@mdx-js/react": "^3.1.0",
+    "@react-three/drei": "^10.7.2",
+    "@react-three/fiber": "^9.3.0",
+    "@tailwindcss/postcss": "^4.1.12",
+    "d3": "^7.9.0",
+    "framer-motion": "^12.23.12",
+    "fuse.js": "^7.1.0",
     "gatsby": "^5.14.6",
     "gatsby-plugin-image": "^3.14.0",
     "gatsby-plugin-manifest": "^5.14.0",
     "gatsby-plugin-mdx": "^5.14.1",
+    "gatsby-plugin-postcss": "^6.14.0",
+    "gatsby-plugin-robots-txt": "^1.8.0",
     "gatsby-plugin-sharp": "^5.14.0",
     "gatsby-plugin-sitemap": "^6.14.0",
+    "gatsby-remark-images": "^7.14.0",
     "gatsby-source-filesystem": "^5.14.0",
     "gatsby-transformer-sharp": "^5.14.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "mermaid": "^11.9.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sharp": "^0.34.3",
+    "three": "^0.179.1"
   },
   "devDependencies": {
-    "@types/node": "^20.11.19",
-    "@types/react": "^18.2.55",
-    "@types/react-dom": "^18.2.19",
-    "typescript": "^5.3.3"
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/typography": "^0.5.16",
+    "@types/d3": "^7.4.3",
+    "@types/node": "^20.19.11",
+    "@types/react": "^18.3.23",
+    "@types/react-dom": "^18.3.7",
+    "autoprefixer": "^10.4.21",
+    "cross-env": "^7.0.3",
+    "dotenv": "^17.2.1",
+    "dotenv-cli": "^10.0.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.12",
+    "typescript": "^5.9.2"
+  },
+  "pnpm": {
+    "overrides": {
+      "sharp": "^0.34.3"
+    }
   }
-}
+  }
