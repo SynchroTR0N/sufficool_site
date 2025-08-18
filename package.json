@@ -14,13 +14,25 @@
     "develop": "dotenv -e .env -- gatsby develop -p $PORT",
     "dev": "dotenv -e .env -- gatsby develop -p $PORT",
     "start": "dotenv -e .env -- gatsby develop -p $PORT",
-    "build": "gatsby build",
+    "build": "gatsby build --log-pages",
+    "build:analyze": "GATSBY_WEBPACK_BUNDLE_ANALYZER=1 gatsby build",
     "serve": "dotenv -e .env -- gatsby serve -p $PORT",
     "clean": "gatsby clean",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "perf": "gatsby build && gatsby serve",
+    "lighthouse": "lighthouse http://localhost:9000 --output=html --output-path=./lighthouse-report.html",
+    "create-content": "node scripts/create-content.js",
+    "content:treatment": "node scripts/create-content.js treatment",
+    "content:journey": "node scripts/create-content.js journey",
+    "content:hub": "node scripts/create-content.js hub",
+    "content:calculator": "node scripts/create-content.js calculator",
+    "content:shared": "node scripts/create-content.js shared",
+    "content:wizard": "node scripts/create-content.js wizard",
+    "content:list": "node scripts/create-content.js list"
   },
   "dependencies": {
-    "@mdx-js/react": "^3.1.0",
+    "@mdx-js/mdx": "^2.3.0",
+    "@mdx-js/react": "^2.3.0",
     "@react-three/drei": "^10.7.2",
     "@react-three/fiber": "^9.3.0",
     "@tailwindcss/postcss": "^4.1.12",
@@ -41,10 +53,15 @@
     "mermaid": "^11.9.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-helmet-async": "^2.0.5",
     "sharp": "^0.34.3",
     "three": "^0.179.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.27.1",
+    "@babel/plugin-transform-react-jsx": "^7.27.1",
+    "@babel/preset-react": "^7.27.1",
+    "@babel/preset-typescript": "^7.27.1",
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/typography": "^0.5.16",
     "@types/d3": "^7.4.3",
@@ -64,4 +81,4 @@
       "sharp": "^0.34.3"
     }
   }
-  }
+}

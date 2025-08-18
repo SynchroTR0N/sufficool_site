@@ -10,9 +10,17 @@ dotenv.config({
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Dr. Daniel Sufficool - Cancer Treatment Education`,
-    description: `Evidence-based cancer treatment information with interactive tools`,
+    description: `Evidence-based cancer treatment information with interactive tools for patient education`,
     author: `Dr. Daniel Sufficool`,
-    siteUrl: `https://drsufficool.com`
+    siteUrl: `https://drsufficool.com`,
+    social: {
+      twitter: `@DrSufficool`
+    },
+    medical: {
+      specialty: `Radiation Oncology`,
+      disclaimer: `Educational content only - not medical advice`,
+      compliance: `HIPAA-compliant platform`
+    }
   },
   graphqlTypegen: true,
   plugins: [
@@ -21,6 +29,7 @@ const config: GatsbyConfig = {
       options: {
         name: 'content',
         path: `${__dirname}/src/content/`,
+        ignore: [`**/.*`], // ignore hidden files
       },
     },
     {
@@ -41,12 +50,23 @@ const config: GatsbyConfig = {
       resolve: 'gatsby-plugin-mdx',
       options: {
         extensions: ['.mdx', '.md'],
+        mdxOptions: {
+          remarkPlugins: [],
+          rehypePlugins: [],
+        },
         gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 1200,
               quality: 90,
+              loading: 'lazy',
+              linkImagesToOriginal: false,
+              showCaptions: true,
+              markdownCaptions: true,
+              backgroundColor: 'transparent',
+              withWebp: true,
+              withAvif: true,
             },
           },
         ],
@@ -68,11 +88,61 @@ const config: GatsbyConfig = {
         icon: 'src/images/icon.png',
       },
     },
-    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                siteUrl
+              }
+            }
+            allSitePage {
+              nodes {
+                path
+                pageContext
+              }
+            }
+          }
+        `,
+        resolveSiteUrl: () => 'https://drsufficool.com',
+        serialize: ({ path, pageContext }) => {
+          // Prioritize medical content for SEO
+          let priority = 0.5;
+          let changefreq = 'monthly';
+          
+          if (path === '/') {
+            priority = 1.0;
+            changefreq = 'weekly';
+          } else if (path.includes('/about/')) {
+            priority = 0.8;
+            changefreq = 'monthly';
+          } else if (path.includes('/cancer-types/') || path.includes('/treatments/')) {
+            priority = 0.9;
+            changefreq = 'monthly';
+          }
+          
+          return {
+            url: path,
+            changefreq,
+            priority,
+            lastmod: new Date().toISOString().split('T')[0],
+          };
+        },
+      },
+    },
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        policy: [{ userAgent: '*', allow: '/' }],
+        policy: [
+          { userAgent: '*', allow: '/' },
+          { userAgent: '*', disallow: '/admin/' },
+          { userAgent: '*', disallow: '/private/' },
+          { userAgent: '*', disallow: '/api/' }
+        ],
+        sitemap: 'https://drsufficool.com/sitemap.xml',
+        host: 'https://drsufficool.com',
       },
     },
   ]

@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Medical education content protection
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+
+# SEO optimization for medical content
+Sitemap: https://www.sufficool.com/sitemap.xml
+
+# Crawl-delay for medical content respect
+Crawl-delay: 1
+
+# Medical content guidelines
+# This site provides educational information about cancer treatment
+# Content is for educational purposes and not medical advice
+# Always consult healthcare providers for medical decisions

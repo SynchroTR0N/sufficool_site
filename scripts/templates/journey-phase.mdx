@@ -1,0 +1,307 @@
+---
+title: "{{phaseName}} Phase - {{cancerType}} Cancer Journey"
+description: "Guide to the {{phaseName}} phase of {{cancerType}} cancer treatment, including what to expect, tasks to complete, and questions to ask."
+slug: "{{slug}}"
+category: "journey-phase"
+cancerType: "{{cancerType}}"
+phase: "{{phaseName}}"
+phaseOrder: {{order}}
+lastUpdated: "{{date}}"
+estimatedDuration: "{{duration}}"
+---
+
+# {{phaseName}} Phase - Your {{cancerType}} Cancer Journey
+
+You are currently in the **{{phaseName}}** phase of your cancer journey. This guide will help you understand what to expect, what tasks to complete, and how to navigate this important phase successfully.
+
+## Journey Progress
+
+<JourneyPhase 
+  currentPhase="{{phaseName}}"
+  cancerType="{{cancerType}}"
+  phaseOrder={{order}}
+  estimatedDuration="{{duration}}"
+/>
+
+## Phase Overview
+
+<ProgressiveContent>
+  <div data-level="essential">
+    **What is the {{phaseName}} Phase?**
+    
+    The {{phaseName}} phase is when... [Description of what happens during this phase]
+    
+    **Key Goals:**
+    - Primary objective 1
+    - Primary objective 2
+    - Primary objective 3
+    
+    **Typical Duration:** {{duration}}
+  </div>
+  
+  <div data-level="detailed">
+    **What to Expect:**
+    
+    During the {{phaseName}} phase, you can expect...
+    
+    **Your Care Team:**
+    - Team member roles and responsibilities
+    - Who you'll interact with most
+    - How communication works
+    
+    **Common Experiences:**
+    - Physical aspects of this phase
+    - Emotional considerations
+    - Practical matters to address
+    
+    **Milestones and Markers:**
+    - Key events or decisions
+    - Progress indicators
+    - Transition criteria to next phase
+  </div>
+  
+  <div data-level="technical">
+    **Clinical Details:**
+    
+    From a medical perspective, this phase involves...
+    
+    **Monitoring and Assessment:**
+    - Tests and evaluations performed
+    - Frequency of assessments
+    - Clinical indicators tracked
+    
+    **Decision Points:**
+    - Key decisions made during this phase
+    - Factors influencing treatment choices
+    - Timing considerations
+  </div>
+</ProgressiveContent>
+
+## Phase Checklist
+
+<JourneyChecklist 
+  title="{{phaseName}} Phase Tasks"
+  phase="{{phaseName}}"
+  tasks={[
+    {
+      category: "Medical Tasks",
+      priority: "high",
+      items: [
+        {
+          task: "Complete required medical evaluations",
+          description: "Description of evaluations needed",
+          deadline: "Within X days",
+          status: "pending"
+        },
+        {
+          task: "Review treatment options with oncologist",
+          description: "Discuss treatment choices and preferences",
+          deadline: "Before treatment planning",
+          status: "pending"
+        },
+        {
+          task: "Obtain second opinion if desired",
+          description: "Seek additional medical perspective",
+          deadline: "Before finalizing treatment",
+          status: "optional"
+        }
+      ]
+    },
+    {
+      category: "Practical Preparations",
+      priority: "medium",
+      items: [
+        {
+          task: "Arrange time off work/responsibilities",
+          description: "Plan for treatment and recovery time",
+          deadline: "Before treatment starts",
+          status: "pending"
+        },
+        {
+          task: "Organize support system",
+          description: "Coordinate help from family and friends",
+          deadline: "Before treatment starts",
+          status: "pending"
+        },
+        {
+          task: "Handle insurance and financial matters",
+          description: "Verify coverage and understand costs",
+          deadline: "As soon as possible",
+          status: "pending"
+        }
+      ]
+    },
+    {
+      category: "Personal Preparation",
+      priority: "medium",
+      items: [
+        {
+          task: "Prepare questions for medical team",
+          description: "Use question generator below",
+          deadline: "Before each appointment",
+          status: "pending"
+        },
+        {
+          task: "Consider emotional support resources",
+          description: "Counseling, support groups, chaplain services",
+          deadline: "As needed",
+          status: "optional"
+        },
+        {
+          task: "Plan for side effect management",
+          description: "Learn about potential side effects and management",
+          deadline: "Before treatment",
+          status: "pending"
+        }
+      ]
+    }
+  ]}
+/>
+
+## Common Concerns and How to Address Them
+
+**Emotional Concerns:**
+- Anxiety about the unknown
+- Fear about treatment outcomes
+- Worry about impact on family
+
+**How to Cope:**
+- Talk with your care team about concerns
+- Consider counseling or support groups
+- Use relaxation and stress management techniques
+- Stay connected with supportive family and friends
+
+**Practical Concerns:**
+- Work and financial impact
+- Caregiving arrangements
+- Transportation to appointments
+- Managing household responsibilities
+
+**How to Address:**
+- Speak with social worker about resources
+- Explore employer benefits and accommodations
+- Organize support network early
+- Consider community resources and assistance programs
+
+**Medical Concerns:**
+- Understanding treatment options
+- Potential side effects
+- Treatment effectiveness
+- Long-term outcomes
+
+**How to Get Clarity:**
+- Prepare questions for your medical team
+- Request written information
+- Bring a support person to appointments
+- Ask for clarification when needed
+
+## Questions for Your Medical Team
+
+<QuestionGenerator 
+  title="{{phaseName}} Phase Questions"
+  phase="{{phaseName}}"
+  categories={[
+    {
+      category: "About This Phase",
+      questions: [
+        "What should I expect during the {{phaseName}} phase?",
+        "How long will this phase typically last?",
+        "What are the key milestones or decisions?",
+        "How will I know when this phase is complete?"
+      ]
+    },
+    {
+      category: "Medical Care",
+      questions: [
+        "What tests or evaluations will be needed?",
+        "Who are the key members of my care team?",
+        "How often will I have appointments?",
+        "What symptoms should I report immediately?"
+      ]
+    },
+    {
+      category: "Practical Matters",
+      questions: [
+        "What preparations should I make?",
+        "How much time off work might I need?",
+        "What support will I need at home?",
+        "Are there resources to help with practical matters?"
+      ]
+    },
+    {
+      category: "Next Steps",
+      questions: [
+        "What happens after this phase?",
+        "How will we decide on the next steps?",
+        "What factors influence treatment decisions?",
+        "When will treatment begin?"
+      ]
+    }
+  ]}
+/>
+
+## Support Resources
+
+**Medical Support:**
+- Your oncology team contact information
+- After-hours contact protocols
+- Emergency contact guidelines
+
+**Emotional Support:**
+- Cancer center counseling services
+- Support group information
+- Online community resources
+- Chaplain or spiritual care services
+
+**Practical Support:**
+- Social work services
+- Financial counseling
+- Transportation assistance
+- Caregiver resources
+
+**Educational Resources:**
+- Treatment-specific information
+- Side effect management guides
+- Nutrition during cancer treatment
+- Exercise and wellness programs
+
+## Preparing for the Next Phase
+
+As you complete the {{phaseName}} phase, you'll be preparing to move to the next stage of your journey:
+
+**What's Coming Next:**
+- Overview of the next phase
+- Key differences from current phase
+- Timeline for transition
+
+**How to Prepare:**
+- Tasks to complete before moving forward
+- Information to gather
+- Arrangements to make
+
+**Transition Planning:**
+- How decisions are made about next steps
+- Your role in the planning process
+- Timeline for transition
+
+## Journey Navigation
+
+<PatientJourney 
+  cancerType="{{cancerType}}"
+  currentPhase="{{phaseName}}"
+  phases={[
+    { name: "Diagnosis", status: "completed", order: 1 },
+    { name: "Planning", status: "current", order: 2 },
+    { name: "Treatment", status: "upcoming", order: 3 },
+    { name: "Recovery", status: "upcoming", order: 4 },
+    { name: "Follow-up", status: "upcoming", order: 5 }
+  ]}
+/>
+
+---
+
+**Remember:** Every person's cancer journey is unique. This guide provides general information about the {{phaseName}} phase, but your specific experience may vary. Always follow the guidance of your medical team and don't hesitate to ask questions.
+
+**Last Updated:** {{date}}  
+**Phase Duration:** {{duration}}  
+**Next Review:** Schedule with your care team

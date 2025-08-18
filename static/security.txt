@@ -1,0 +1,13 @@
+Contact: security@sufficool.com
+Preferred-Languages: en
+Canonical: https://www.sufficool.com/.well-known/security.txt
+
+Policy: https://www.sufficool.com/security-policy
+
+# Medical Platform Security Notice
+# This platform provides educational medical content only
+# No personal health information is collected or stored
+# Report security vulnerabilities responsibly
+# HIPAA compliance maintained for all interactions
+
+Acknowledgments: Thank you for helping keep this medical education platform secure.

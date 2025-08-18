@@ -1,0 +1,350 @@
+---
+title: "{{cancerType}} Cancer Treatment Guide"
+description: "Comprehensive information about {{cancerType}} cancer treatment options, patient journey, and decision support tools."
+slug: "{{cancerType}}"
+category: "cancer-type"
+cancerType: "{{cancerType}}"
+lastUpdated: "{{date}}"
+---
+
+# {{cancerType}} Cancer Treatment Guide
+
+Welcome to your comprehensive guide for understanding {{cancerType}} cancer treatment options. This resource is designed to help you navigate your cancer journey with evidence-based information, interactive tools, and personalized guidance.
+
+## Getting Started with Your {{cancerType}} Cancer Journey
+
+<ProgressiveContent>
+  <div data-level="essential">
+    **Understanding {{cancerType}} Cancer**
+    
+    {{cancerType}} cancer affects... [Basic overview of the cancer type]
+    
+    **What You'll Find Here:**
+    - Treatment options and approaches
+    - Step-by-step journey guidance  
+    - Interactive decision support tools
+    - Questions to prepare for appointments
+    
+    **Your First Steps:**
+    1. Understand your diagnosis and staging
+    2. Learn about treatment options
+    3. Build your support team
+    4. Prepare questions for your medical team
+  </div>
+  
+  <div data-level="detailed">
+    **About {{cancerType}} Cancer**
+    
+    Detailed information about {{cancerType}} cancer including:
+    - How this cancer develops and spreads
+    - Risk factors and causes
+    - Symptoms and detection methods
+    - Staging and prognosis factors
+    
+    **Treatment Philosophy**
+    
+    Modern {{cancerType}} cancer treatment focuses on:
+    - Personalized treatment plans
+    - Quality of life considerations  
+    - Shared decision-making
+    - Comprehensive support services
+    
+    **What Makes This Guide Different**
+    
+    This platform combines:
+    - Latest medical evidence and research
+    - Interactive tools for decision support
+    - Personalized journey mapping
+    - Real-world patient considerations
+  </div>
+  
+  <div data-level="technical">
+    **Clinical Overview**
+    
+    {{cancerType}} cancer classification and characteristics:
+    - Histological subtypes and features
+    - Molecular markers and biomarkers
+    - Staging systems and prognostic factors
+    - Treatment response predictors
+    
+    **Current Research Directions**
+    
+    Active areas of {{cancerType}} cancer research:
+    - Targeted therapy developments
+    - Immunotherapy applications
+    - Precision medicine approaches
+    - Quality of life optimization
+  </div>
+</ProgressiveContent>
+
+## Your {{cancerType}} Cancer Journey
+
+<PatientJourney 
+  cancerType="{{cancerType}}"
+  phases={[
+    {
+      name: "Diagnosis",
+      description: "Understanding your diagnosis and staging",
+      duration: "1-2 weeks",
+      keyTasks: [
+        "Complete staging workup",
+        "Meet with oncology team", 
+        "Understand prognosis",
+        "Begin building support system"
+      ]
+    },
+    {
+      name: "Planning", 
+      description: "Treatment planning and decision making",
+      duration: "1-3 weeks",
+      keyTasks: [
+        "Review treatment options",
+        "Get second opinion if desired",
+        "Make treatment decisions",
+        "Prepare for treatment"
+      ]
+    },
+    {
+      name: "Treatment",
+      description: "Active treatment delivery and management", 
+      duration: "Variable",
+      keyTasks: [
+        "Receive planned treatment",
+        "Manage side effects",
+        "Monitor progress",
+        "Maintain quality of life"
+      ]
+    },
+    {
+      name: "Recovery",
+      description: "Recovery and adjustment after treatment",
+      duration: "2-6 months", 
+      keyTasks: [
+        "Recover from treatment effects",
+        "Resume normal activities",
+        "Address ongoing concerns",
+        "Plan for surveillance"
+      ]
+    },
+    {
+      name: "Follow-up",
+      description: "Long-term monitoring and survivorship",
+      duration: "Ongoing",
+      keyTasks: [
+        "Regular surveillance visits",
+        "Monitor for recurrence", 
+        "Manage late effects",
+        "Focus on wellness"
+      ]
+    }
+  ]}
+/>
+
+## Understanding Your Diagnosis
+
+<StageSelector 
+  cancerType="{{cancerType}}"
+  title="{{cancerType}} Cancer Staging"
+  description="Select your stage to learn about specific treatment options and prognosis"
+  stages={[
+    {
+      stage: "Stage I",
+      description: "Early-stage, localized cancer",
+      treatmentApproaches: ["Surgery", "Active surveillance"],
+      prognosis: "Excellent"
+    },
+    {
+      stage: "Stage II", 
+      description: "Locally advanced cancer",
+      treatmentApproaches: ["Surgery", "Radiation", "Combination therapy"],
+      prognosis: "Very good"
+    },
+    {
+      stage: "Stage III",
+      description: "Regional spread to lymph nodes", 
+      treatmentApproaches: ["Combination therapy", "Systemic treatment"],
+      prognosis: "Good with treatment"
+    },
+    {
+      stage: "Stage IV",
+      description: "Metastatic cancer",
+      treatmentApproaches: ["Systemic therapy", "Palliative care"],
+      prognosis: "Focus on quality of life"
+    }
+  ]}
+/>
+
+## Treatment Options
+
+### Primary Treatment Approaches
+
+**Surgical Options:**
+- [Surgical Option 1](/{{cancerType}}/treatments/surgery-1)
+- [Surgical Option 2](/{{cancerType}}/treatments/surgery-2)
+
+**Radiation Therapy:**
+- [External Beam Radiation](/{{cancerType}}/treatments/external-beam)
+- [Stereotactic Radiation](/{{cancerType}}/treatments/sbrt)
+- [Brachytherapy](/{{cancerType}}/treatments/brachytherapy)
+
+**Systemic Therapy:**
+- [Chemotherapy](/{{cancerType}}/treatments/chemotherapy)
+- [Hormone Therapy](/{{cancerType}}/treatments/hormone-therapy)
+- [Targeted Therapy](/{{cancerType}}/treatments/targeted-therapy)
+- [Immunotherapy](/{{cancerType}}/treatments/immunotherapy)
+
+**Other Approaches:**
+- [Active Surveillance](/{{cancerType}}/treatments/active-surveillance)
+- [Clinical Trials](/{{cancerType}}/clinical-trials)
+
+## Interactive Decision Support
+
+<DecisionTree 
+  title="{{cancerType}} Cancer Treatment Decision Support"
+  cancerType="{{cancerType}}"
+  startNode="diagnosis"
+  nodes={[
+    {
+      id: "diagnosis",
+      question: "What is your cancer stage?",
+      options: [
+        { text: "Stage I-II (Early)", next: "early-stage" },
+        { text: "Stage III (Locally Advanced)", next: "locally-advanced" },
+        { text: "Stage IV (Metastatic)", next: "metastatic" }
+      ]
+    },
+    {
+      id: "early-stage", 
+      question: "What are your treatment priorities?",
+      options: [
+        { text: "Definitive cure", next: "curative-intent" },
+        { text: "Minimal side effects", next: "conservative" },
+        { text: "Need more information", next: "consultation" }
+      ]
+    }
+  ]}
+/>
+
+## Risk Assessment Tools
+
+[Interactive Risk Calculators](/{{cancerType}}/calculators)
+
+- **Prognosis Calculator**: Estimate outcomes based on your specific factors
+- **Treatment Comparison Tool**: Compare benefits and risks of different treatments  
+- **Side Effect Predictor**: Understand likelihood of treatment side effects
+- **Quality of Life Assessment**: Evaluate impact on daily activities
+
+## Questions for Your Medical Team
+
+<QuestionGenerator 
+  title="Essential Questions About {{cancerType}} Cancer"
+  cancerType="{{cancerType}}"
+  categories={[
+    {
+      category: "About My Diagnosis",
+      questions: [
+        "What stage is my {{cancerType}} cancer?",
+        "What does this stage mean for my prognosis?", 
+        "Are there specific characteristics of my cancer that affect treatment?",
+        "What additional tests do I need?"
+      ]
+    },
+    {
+      category: "Treatment Options",
+      questions: [
+        "What are all my treatment options?",
+        "What do you recommend and why?",
+        "What are the benefits and risks of each option?",
+        "How will treatment affect my daily life?"
+      ]
+    },
+    {
+      category: "Prognosis and Outcomes",
+      questions: [
+        "What can I expect from treatment?",
+        "What are the chances of cure or control?",
+        "How will we monitor my progress?", 
+        "What happens if treatment doesn't work?"
+      ]
+    },
+    {
+      category: "Support and Resources",
+      questions: [
+        "What support services are available?",
+        "How can my family help?",
+        "Are there clinical trials I should consider?",
+        "Who should I contact with questions?"
+      ]
+    }
+  ]}
+/>
+
+## Clinical Evidence and Research
+
+<Evidence 
+  title="Key {{cancerType}} Cancer Research"
+  studies={[
+    {
+      title: "Latest {{cancerType}} cancer treatment guidelines",
+      organization: "National Comprehensive Cancer Network (NCCN)",
+      year: 2024,
+      summary: "Comprehensive treatment recommendations based on current evidence",
+      link: "https://www.nccn.org"
+    },
+    {
+      title: "Recent advances in {{cancerType}} cancer therapy",
+      journal: "Journal of Clinical Oncology", 
+      year: 2024,
+      pmid: "UPDATE_PMID",
+      summary: "Overview of recent therapeutic developments and outcomes"
+    }
+  ]}
+/>
+
+## Quick Navigation
+
+### By Treatment Phase
+- [Diagnosis Phase](/{{cancerType}}/journey/diagnosis) - Understanding your diagnosis
+- [Planning Phase](/{{cancerType}}/journey/planning) - Making treatment decisions  
+- [Treatment Phase](/{{cancerType}}/journey/treatment) - During active treatment
+- [Recovery Phase](/{{cancerType}}/journey/recovery) - After treatment completion
+- [Follow-up Phase](/{{cancerType}}/journey/follow-up) - Long-term care
+
+### By Information Type
+- [Staging Information](/{{cancerType}}/staging) - Understanding cancer stages
+- [Treatment Comparison](/{{cancerType}}/treatment-comparison) - Side-by-side treatment comparison
+- [Side Effect Management](/{{cancerType}}/side-effects) - Managing treatment side effects
+- [Support Resources](/{{cancerType}}/support) - Emotional and practical support
+
+### Interactive Tools
+- [Decision Tree](/{{cancerType}}/decision-guide) - Treatment decision support
+- [Risk Calculators](/{{cancerType}}/calculators) - Outcome prediction tools
+- [Question Generator](/{{cancerType}}/questions) - Prepare for appointments
+- [Symptom Tracker](/{{cancerType}}/symptoms) - Monitor your progress
+
+## Support and Resources
+
+**Medical Team:**
+- Your oncologist and care team contacts
+- Emergency contact information
+- After-hours support protocols
+
+**Educational Resources:**
+- [Understanding Cancer Basics](/shared/understanding-cancer)
+- [Managing Anxiety](/shared/universal-concerns/managing-anxiety)  
+- [Nutrition During Treatment](/shared/universal-concerns/nutrition)
+- [Clinical Trials Information](/shared/universal-concerns/clinical-trials)
+
+**Support Services:**
+- Cancer center support groups
+- Online communities and forums
+- Caregiver resources and support
+- Financial assistance programs
+
+---
+
+**About This Guide:** This comprehensive resource is designed to help you make informed decisions about your {{cancerType}} cancer care. All information is based on current medical evidence and guidelines, regularly updated, and reviewed by medical professionals.
+
+**Last Updated:** {{date}}  
+**Medical Review:** Dr. Daniel Sufficool, MD - Medical Oncologist  
+**Next Update:** Quarterly review with latest research

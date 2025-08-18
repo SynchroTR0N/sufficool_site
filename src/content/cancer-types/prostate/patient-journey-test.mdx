@@ -1,0 +1,39 @@
+---
+title: "Patient Journey Test"
+description: "Testing the PatientJourney component integration"
+slug: "prostate/patient-journey-test"
+category: "test"
+cancerType: "prostate"
+lastUpdated: "2024-01-15"
+---
+
+# Patient Journey Component Test
+
+This page demonstrates the PatientJourney component functionality.
+
+## Current Journey Status
+
+import { PatientJourney } from '@/components/medical'
+
+<PatientJourney
+  cancerType="prostate"
+  stage="T2"
+  treatmentChoice="radiation"
+  currentPhase="planning"
+  showFullJourney={true}
+  interactive={true}
+/>
+
+## Component Features
+
+The PatientJourney component provides:
+
+- **Dynamic content** based on cancer type and stage
+- **Interactive timeline** with clickable phases
+- **Personalized resources** for each phase
+- **Progress tracking** with checklists
+- **Responsive design** for mobile and desktop
+
+## Next Steps
+
+This component can be integrated into any treatment page to provide patients with a clear understanding of their treatment journey.

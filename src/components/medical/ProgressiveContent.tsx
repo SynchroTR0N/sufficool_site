@@ -1,9 +1,18 @@
-
 import React from 'react';
 
-const ProgressiveContent = () => {
+interface ProgressiveContentProps {
+  children?: React.ReactNode;
+  className?: string;
+}
+
+const ProgressiveContent: React.FC<ProgressiveContentProps> = ({ 
+  children, 
+  className = '' 
+}) => {
   return (
-    <div>ProgressiveContent</div>
+    <div className={`progressive-content ${className}`}>
+      {children}
+    </div>
   );
 };
 

@@ -1,0 +1,309 @@
+---
+title: "{{calculatorName}} - {{cancerType}} Cancer"
+description: "Interactive {{calculatorName}} calculator for {{cancerType}} cancer patients and healthcare providers."
+slug: "{{slug}}"
+category: "calculator"
+cancerType: "{{cancerType}}"
+calculatorType: "{{calculatorType}}"
+lastUpdated: "{{date}}"
+evidenceLevel: "1A"
+validatedBy: "Clinical research studies"
+---
+
+# {{calculatorName}} for {{cancerType}} Cancer
+
+This interactive calculator helps estimate outcomes and guide treatment decisions for {{cancerType}} cancer patients. The calculator is based on validated clinical research and provides personalized risk assessments.
+
+## How to Use This Calculator
+
+<ProgressiveContent>
+  <div data-level="essential">
+    **What This Calculator Does:**
+    
+    The {{calculatorName}} helps predict... [Basic description of what the calculator predicts]
+    
+    **Who Should Use It:**
+    - {{cancerType}} cancer patients
+    - Healthcare providers
+    - Patients considering treatment options
+    - Those seeking personalized risk information
+    
+    **What You'll Need:**
+    - Your cancer stage and grade
+    - Treatment history information
+    - Basic medical information
+    - Recent test results
+  </div>
+  
+  <div data-level="detailed">
+    **Calculator Details:**
+    
+    This tool uses validated algorithms to calculate... [Detailed explanation of methodology]
+    
+    **Input Parameters:**
+    - Patient demographics (age, overall health)
+    - Cancer characteristics (stage, grade, markers)
+    - Treatment factors (type, timing, response)
+    - Other relevant medical factors
+    
+    **Output Provided:**
+    - Risk estimates with confidence intervals
+    - Personalized outcome predictions
+    - Treatment comparison data
+    - Visual representations of results
+    
+    **Interpretation Guidance:**
+    - How to read the results
+    - What the numbers mean for you
+    - Limitations and considerations
+    - When to discuss with your doctor
+  </div>
+  
+  <div data-level="technical">
+    **Validation and Methodology:**
+    
+    This calculator is based on... [Technical details about validation studies]
+    
+    **Statistical Models:**
+    - Model development cohorts
+    - Validation populations
+    - Performance metrics (c-index, calibration)
+    - External validation studies
+    
+    **Clinical Evidence:**
+    - Supporting research studies
+    - Population applicability
+    - Model limitations
+    - Update frequency
+  </div>
+</ProgressiveContent>
+
+## Interactive Calculator
+
+<OutcomePredictor 
+  title="{{calculatorName}}"
+  cancerType="{{cancerType}}"
+  calculatorType="{{calculatorType}}"
+  parameters={[
+    {
+      name: "age",
+      label: "Age at diagnosis",
+      type: "number",
+      min: 18,
+      max: 100,
+      required: true
+    },
+    {
+      name: "stage",
+      label: "Cancer stage", 
+      type: "select",
+      options: [
+        { value: "1", label: "Stage I" },
+        { value: "2", label: "Stage II" },
+        { value: "3", label: "Stage III" },
+        { value: "4", label: "Stage IV" }
+      ],
+      required: true
+    },
+    {
+      name: "grade",
+      label: "Tumor grade",
+      type: "select", 
+      options: [
+        { value: "1", label: "Grade 1 (Low)" },
+        { value: "2", label: "Grade 2 (Intermediate)" },
+        { value: "3", label: "Grade 3 (High)" }
+      ],
+      required: true
+    },
+    {
+      name: "comorbidities",
+      label: "Other health conditions",
+      type: "multiselect",
+      options: [
+        { value: "diabetes", label: "Diabetes" },
+        { value: "heart_disease", label: "Heart Disease" },
+        { value: "kidney_disease", label: "Kidney Disease" },
+        { value: "none", label: "None" }
+      ]
+    }
+  ]}
+  outcomes={[
+    {
+      name: "5-year survival",
+      description: "Probability of surviving 5 years",
+      format: "percentage"
+    },
+    {
+      name: "10-year survival", 
+      description: "Probability of surviving 10 years",
+      format: "percentage"
+    },
+    {
+      name: "Treatment benefit",
+      description: "Expected benefit from treatment",
+      format: "percentage_change"
+    }
+  ]}
+/>
+
+## Understanding Your Results
+
+### What the Numbers Mean
+
+**Survival Estimates:**
+- These represent statistical averages based on similar patients
+- Individual outcomes may vary significantly
+- Results are probabilities, not certainties
+- Consider confidence intervals provided
+
+**Treatment Benefit:**
+- Shows potential improvement with treatment
+- Based on clinical trial data
+- May not apply to all individual situations
+- Discuss relevance with your medical team
+
+### Important Limitations
+
+<MedicalDisclaimer>
+  **Calculator Limitations:**
+  
+  - Based on population averages, not individual guarantees
+  - May not include all relevant factors
+  - Results depend on accuracy of input information
+  - Cannot predict individual outcomes with certainty
+  - Should supplement, not replace, medical consultation
+  
+  **When Results May Not Apply:**
+  - Rare cancer subtypes or presentations
+  - Significant comorbidities not captured
+  - Novel or experimental treatments
+  - Recent changes in standard of care
+</MedicalDisclaimer>
+
+## Clinical Evidence Supporting This Calculator
+
+<Evidence 
+  title="Research Validation for {{calculatorName}}"
+  studies={[
+    {
+      title: "Development and validation of {{calculatorName}}",
+      journal: "Journal of Clinical Oncology",
+      year: 2024,
+      pmid: "UPDATE_PMID",
+      summary: "Original development study with validation cohort",
+      patientPopulation: "{{cancerType}} cancer patients (n=X,XXX)",
+      primaryEndpoint: "Overall survival prediction accuracy",
+      results: "C-index 0.XX (95% CI: 0.XX-0.XX), well-calibrated"
+    },
+    {
+      title: "External validation of {{calculatorName}} in diverse populations",
+      journal: "Cancer Research",
+      year: 2024,
+      pmid: "UPDATE_PMID", 
+      summary: "Multi-institutional validation study",
+      patientPopulation: "Diverse patient cohort (n=X,XXX)",
+      primaryEndpoint: "Model performance across populations",
+      results: "Maintained accuracy across age, race, and institution"
+    }
+  ]}
+/>
+
+## Questions to Ask Your Doctor About These Results
+
+<QuestionGenerator 
+  title="Discussing Calculator Results with Your Medical Team"
+  categories={[
+    {
+      category: "Understanding Results",
+      questions: [
+        "How do these results apply to my specific situation?",
+        "What factors might make my outcomes different?",
+        "How confident should I be in these estimates?", 
+        "What other information should I consider?"
+      ]
+    },
+    {
+      category: "Treatment Decisions",
+      questions: [
+        "How should these results influence my treatment choice?",
+        "Do these numbers change your recommendations?",
+        "What would happen if I chose different treatments?",
+        "Are there newer treatments not reflected in this calculator?"
+      ]
+    },
+    {
+      category: "Prognosis and Planning",
+      questions: [
+        "What can I do to improve my outcomes?",
+        "How often should we reassess these predictions?",
+        "What symptoms should I watch for?",
+        "How will we monitor my progress?"
+      ]
+    },
+    {
+      category: "Support and Resources",
+      questions: [
+        "What support is available based on these results?",
+        "Should I consider a second opinion?",
+        "Are there clinical trials that might benefit me?",
+        "What resources can help me cope with this information?"
+      ]
+    }
+  ]}
+/>
+
+## Comparing Treatment Options
+
+Based on your calculator results, you may want to explore these treatment comparisons:
+
+- [Treatment Option 1](/{{cancerType}}/treatments/option-1) - Expected outcomes with this approach
+- [Treatment Option 2](/{{cancerType}}/treatments/option-2) - Alternative treatment outcomes  
+- [Combined Approaches](/{{cancerType}}/treatments/combination) - Multi-modal treatment results
+- [Active Surveillance](/{{cancerType}}/treatments/surveillance) - Monitoring approach outcomes
+
+## Next Steps
+
+**Immediate Actions:**
+1. Print or save your calculator results
+2. Prepare questions for your next appointment
+3. Share results with your medical team
+4. Consider discussion with family/caregivers
+
+**Further Exploration:**
+- Learn about relevant treatment options
+- Explore support resources
+- Consider second opinion if appropriate
+- Discuss participation in clinical trials
+
+**Ongoing Monitoring:**
+- Regular reassessment as treatment progresses
+- Updated calculations with new information
+- Tracking actual vs. predicted outcomes
+- Adjusting expectations as needed
+
+## Related Tools and Resources
+
+**Other Calculators:**
+- [Risk Assessment Tool](/{{cancerType}}/calculators/risk-assessment)
+- [Side Effect Predictor](/{{cancerType}}/calculators/side-effects)
+- [Quality of Life Estimator](/{{cancerType}}/calculators/quality-of-life)
+
+**Decision Support:**
+- [Treatment Decision Tree](/{{cancerType}}/decision-guide)
+- [Treatment Comparison Tool](/{{cancerType}}/treatment-comparison)
+- [Patient Journey Guide](/{{cancerType}}/journey)
+
+**Educational Resources:**
+- [Understanding Prognosis](/shared/understanding-cancer/prognosis)
+- [Treatment Options Overview](/{{cancerType}}/treatments)
+- [Managing Uncertainty](/shared/universal-concerns/managing-anxiety)
+
+---
+
+**Important Note:** This calculator provides statistical estimates based on research studies. Your individual outcome may be better or worse than predicted. These results should be discussed with your healthcare team as part of comprehensive care planning.
+
+**Calculator Version:** 2024.1  
+**Last Updated:** {{date}}  
+**Next Update:** Quarterly with latest research  
+**Technical Support:** Contact your healthcare provider for interpretation assistance

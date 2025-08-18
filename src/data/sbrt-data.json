@@ -1,0 +1,113 @@
+{
+  "evidence": {
+    "title": "Research Supporting SBRT",
+    "studies": [
+      {
+        "title": "Key study title - update with actual research",
+        "journal": "Journal Name",
+        "year": 2024,
+        "pmid": "PMID_NUMBER",
+        "summary": "Summary of key findings and clinical significance",
+        "patientPopulation": "Patient characteristics and eligibility criteria",
+        "primaryEndpoint": "Primary outcome measured",
+        "results": "Statistical results with confidence intervals"
+      }
+    ]
+  },
+  "timeline": {
+    "title": "SBRT Treatment Journey",
+    "events": [
+      {
+        "phase": "Consultation",
+        "duration": "1-2 weeks",
+        "description": "Initial evaluation and treatment planning",
+        "tasks": ["Medical history review", "Imaging studies", "Treatment planning"]
+      },
+      {
+        "phase": "Preparation",
+        "duration": "1 week",
+        "description": "Pre-treatment preparations",
+        "tasks": ["Final planning", "Patient education", "Consent process"]
+      },
+      {
+        "phase": "Treatment",
+        "duration": "Variable",
+        "description": "Active treatment delivery",
+        "tasks": ["Treatment sessions", "Side effect monitoring", "Progress evaluation"]
+      },
+      {
+        "phase": "Recovery",
+        "duration": "2-4 weeks",
+        "description": "Initial recovery period",
+        "tasks": ["Symptom management", "Follow-up appointments", "Recovery monitoring"]
+      },
+      {
+        "phase": "Follow-up",
+        "duration": "Ongoing",
+        "description": "Long-term monitoring and care",
+        "tasks": ["Regular check-ups", "Surveillance imaging", "Quality of life assessment"]
+      }
+    ]
+  },
+  "sideEffects": {
+    "title": "SBRT Side Effects",
+    "effects": [
+      {
+        "name": "Common Side Effect 1",
+        "frequency": "60-80%",
+        "severity": "mild-moderate",
+        "onset": "During treatment",
+        "duration": "1-2 weeks",
+        "management": "Management strategies"
+      },
+      {
+        "name": "Common Side Effect 2",
+        "frequency": "40-60%",
+        "severity": "mild",
+        "onset": "1-2 weeks",
+        "duration": "2-4 weeks",
+        "management": "Management strategies"
+      },
+      {
+        "name": "Less Common Side Effect",
+        "frequency": "10-20%",
+        "severity": "moderate",
+        "onset": "Variable",
+        "duration": "Variable",
+        "management": "Management strategies"
+      }
+    ]
+  },
+  "questions": {
+    "title": "Questions to Ask About SBRT",
+    "categories": [
+      {
+        "category": "Treatment Details",
+        "questions": [
+          "How many treatment sessions will I need?",
+          "What can I expect during each treatment?",
+          "How will you monitor my response?",
+          "What preparation is needed?"
+        ]
+      },
+      {
+        "category": "Side Effects",
+        "questions": [
+          "What side effects should I expect?",
+          "How can side effects be managed?",
+          "When should I contact you about side effects?",
+          "Are there long-term effects to consider?"
+        ]
+      },
+      {
+        "category": "Outcomes",
+        "questions": [
+          "What are the expected outcomes?",
+          "How will we know if the treatment is working?",
+          "What happens if the treatment doesn't work?",
+          "What are the next steps after treatment?"
+        ]
+      }
+    ]
+  }
+}

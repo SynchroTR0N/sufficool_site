@@ -11,9 +11,12 @@ importers:
 
   .:
     dependencies:
+      '@mdx-js/mdx':
+        specifier: ^2.3.0
+        version: 2.3.0
       '@mdx-js/react':
-        specifier: ^3.1.0
-        version: 3.1.0(@types/react@18.3.23)(react@18.3.1)
+        specifier: ^2.3.0
+        version: 2.3.0(react@18.3.1)
       '@react-three/drei':
         specifier: ^10.7.2
         version: 10.7.2(@react-three/fiber@9.3.0(@types/react@18.3.23)(immer@9.0.21)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.179.1))(@types/react@18.3.23)(@types/three@0.179.0)(immer@9.0.21)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.179.1)
@@ -43,7 +46,7 @@ importers:
         version: 5.14.0(gatsby@5.14.6(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.9.2))(graphql@16.11.0)
       gatsby-plugin-mdx:
         specifier: ^5.14.1
-        version: 5.14.1(@mdx-js/react@3.1.0(@types/react@18.3.23)(react@18.3.1))(gatsby-source-filesystem@5.14.0(gatsby@5.14.6(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.9.2)))(gatsby@5.14.6(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.9.2))(graphql@16.11.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 5.14.1(@mdx-js/react@2.3.0(react@18.3.1))(gatsby-source-filesystem@5.14.0(gatsby@5.14.6(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.9.2)))(gatsby@5.14.6(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.9.2))(graphql@16.11.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       gatsby-plugin-postcss:
         specifier: ^6.14.0
         version: 6.14.0(gatsby@5.14.6(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.9.2))(postcss@8.5.6)(typescript@5.9.2)(webpack@5.98.0)
@@ -74,6 +77,9 @@ importers:
       react-dom:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
+      react-helmet-async:
+        specifier: ^2.0.5
+        version: 2.0.5(react@18.3.1)
       sharp:
         specifier: ^0.34.3
         version: 0.34.3
@@ -81,6 +87,18 @@ importers:
         specifier: ^0.179.1
         version: 0.179.1
     devDependencies:
+      '@babel/core':
+        specifier: ^7.27.1
+        version: 7.28.3
+      '@babel/plugin-transform-react-jsx':
+        specifier: ^7.27.1
+        version: 7.27.1(@babel/core@7.28.3)
+      '@babel/preset-react':
+        specifier: ^7.27.1
+        version: 7.27.1(@babel/core@7.28.3)
+      '@babel/preset-typescript':
+        specifier: ^7.27.1
+        version: 7.27.1(@babel/core@7.28.3)
       '@tailwindcss/forms':
         specifier: ^0.5.10
         version: 0.5.10(tailwindcss@4.1.12)
@@ -1180,10 +1198,9 @@ packages:
   '@mdx-js/mdx@2.3.0':
     resolution: {integrity: sha512-jLuwRlz8DQfQNiUCJR50Y09CGPq3fLtmtUQfVrj79E0JWu3dvsVcxVIcfhR5h0iXu+/z++zDrYeiJqifRynJkA==}
 
-  '@mdx-js/react@3.1.0':
-    resolution: {integrity: sha512-QjHtSaoameoalGnKDT3FoIl4+9RwyTmo9ZJGBdLOks/YOiWHoRDI3PUwEzOE7kEmGcV3AFcp9K6dYu9rEuKLAQ==}
+  '@mdx-js/react@2.3.0':
+    resolution: {integrity: sha512-zQH//gdOmuu7nt2oJR29vFhDv88oGPmVw6BggmrHeMI+xgEkp1B2dX9/bMBSYtK0dyLX/aOmesKS09g222K1/g==}
     peerDependencies:
-      '@types/react': '>=16'
       react: '>=16'
 
   '@mediapipe/tasks-vision@0.10.17':
@@ -5977,6 +5994,14 @@ packages:
   react-error-overlay@6.1.0:
     resolution: {integrity: sha512-SN/U6Ytxf1QGkw/9ve5Y+NxBbZM6Ht95tuXNMKs8EJyFa/Vy/+Co3stop3KBHARfn/giv+Lj1uUnTfOJ3moFEQ==}
 
+  react-fast-compare@3.2.2:
+    resolution: {integrity: sha512-nsO+KSNgo1SbJqJEYRE9ERzo7YtYbou/OqjSQKxV7jcKox7+usiUVZOAC+XnDOABXggQTno0Y1CpVnuWEc1boQ==}
+
+  react-helmet-async@2.0.5:
+    resolution: {integrity: sha512-rYUYHeus+i27MvFE+Jaa4WsyBKGkL6qVgbJvSBoX8mbsWoABJXdEO0bZyi0F6i+4f0NuIb8AvqPMj3iXFHkMwg==}
+    peerDependencies:
+      react: ^16.6.0 || ^17.0.0 || ^18.0.0
+
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
@@ -6309,6 +6334,9 @@ packages:
 
   shallow-compare@1.2.2:
     resolution: {integrity: sha512-LUMFi+RppPlrHzbqmFnINTrazo0lPNwhcgzuAXVVcfy/mqPDrQmHAyz5bvV0gDAuRFrk804V0HpQ6u9sZ0tBeg==}
+
+  shallowequal@1.1.0:
+    resolution: {integrity: sha512-y0m1JoUZSlPAjXVtPPW70aZWfIL/dSP7AFkRnniLCrK/8MDKog3TySTBmckD+RObVxH0v4Tox67+F14PdED2oQ==}
 
   sharp@0.34.3:
     resolution: {integrity: sha512-eX2IQ6nFohW4DbvHIOLRB3MHFpYqaqvXd3Tp5e/T/dSH83fxaNJQRvDMhASmkNTsNTVF2/OOopzRCt7xokgPfg==}
@@ -8593,7 +8621,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@mdx-js/react@3.1.0(@types/react@18.3.23)(react@18.3.1)':
+  '@mdx-js/react@2.3.0(react@18.3.1)':
     dependencies:
       '@types/mdx': 2.0.13
       '@types/react': 18.3.23
@@ -11912,10 +11940,10 @@ snapshots:
     transitivePeerDependencies:
       - graphql
 
-  gatsby-plugin-mdx@5.14.1(@mdx-js/react@3.1.0(@types/react@18.3.23)(react@18.3.1))(gatsby-source-filesystem@5.14.0(gatsby@5.14.6(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.9.2)))(gatsby@5.14.6(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.9.2))(graphql@16.11.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  gatsby-plugin-mdx@5.14.1(@mdx-js/react@2.3.0(react@18.3.1))(gatsby-source-filesystem@5.14.0(gatsby@5.14.6(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.9.2)))(gatsby@5.14.6(babel-eslint@10.1.0(eslint@7.32.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.9.2))(graphql@16.11.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@mdx-js/mdx': 2.3.0
-      '@mdx-js/react': 3.1.0(@types/react@18.3.23)(react@18.3.1)
+      '@mdx-js/react': 2.3.0(react@18.3.1)
       acorn: 8.15.0
       acorn-jsx: 5.3.2(acorn@8.15.0)
       astring: 1.9.0
@@ -14541,6 +14569,15 @@ snapshots:
 
   react-error-overlay@6.1.0: {}
 
+  react-fast-compare@3.2.2: {}
+
+  react-helmet-async@2.0.5(react@18.3.1):
+    dependencies:
+      invariant: 2.2.4
+      react: 18.3.1
+      react-fast-compare: 3.2.2
+      shallowequal: 1.1.0
+
   react-is@16.13.1: {}
 
   react-reconciler@0.31.0(react@18.3.1):
@@ -14951,6 +14988,8 @@ snapshots:
       kind-of: 6.0.3
 
   shallow-compare@1.2.2: {}
+
+  shallowequal@1.1.0: {}
 
   sharp@0.34.3:
     dependencies:

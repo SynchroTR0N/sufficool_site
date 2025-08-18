@@ -1,0 +1,277 @@
+---
+title: "SBRT for prostate Cancer"
+description: "Evidence-based information about SBRT for prostate cancer treatment, including benefits, side effects, and patient considerations."
+slug: "sbrt"
+category: "treatment"
+cancerType: "prostate"
+treatmentType: "radiation"
+lastUpdated: "2025-08-17"
+evidenceLevel: "1A"
+reviewedBy: "Dr. Daniel Sufficool, MD"
+---
+
+# SBRT for prostate Cancer
+
+Welcome to your comprehensive guide about SBRT for treating prostate cancer. This page provides evidence-based information to help you understand this treatment option and make informed decisions about your care.
+
+## Treatment Overview
+
+<ProgressiveContent>
+  <div data-level="essential">
+    SBRT is a radiation approach for treating prostate cancer. This treatment...
+    
+    **Key Points:**
+    - What the treatment involves
+    - How it works against cancer
+    - Who might be a candidate
+    - Expected timeline and schedule
+  </div>
+  
+  <div data-level="detailed">
+    **How SBRT Works:**
+    
+    Detailed explanation of the treatment mechanism...
+    
+    **Treatment Process:**
+    1. Pre-treatment preparation and planning
+    2. Treatment delivery and monitoring
+    3. Recovery and follow-up care
+    
+    **What to Expect:**
+    - Duration of treatment
+    - Frequency of appointments
+    - Side effect management
+    - Recovery timeline
+  </div>
+  
+  <div data-level="technical">
+    **Clinical Mechanism:**
+    
+    Technical details about how the treatment works at the cellular/molecular level...
+    
+    **Treatment Parameters:**
+    - Dosing and scheduling protocols
+    - Response monitoring methods
+    - Biomarker considerations
+    - Combination therapy approaches
+    
+    **Research Background:**
+    Clinical trials and studies supporting this treatment approach...
+  </div>
+</ProgressiveContent>
+
+## Clinical Evidence
+
+<Evidence 
+  title="Research Supporting SBRT"
+  studies={[
+    {
+      title: "Key study title - update with actual research",
+      journal: "Journal Name",
+      year: 2024,
+      pmid: "PMID_NUMBER",
+      summary: "Summary of key findings and clinical significance",
+      patientPopulation: "Patient characteristics and eligibility criteria",
+      primaryEndpoint: "Primary outcome measured",
+      results: "Statistical results with confidence intervals"
+    }
+  ]}
+/>
+
+## Treatment Visualization
+
+<AnatomyDiagram 
+  title="SBRT Treatment Area"
+  description="Shows the area where SBRT is delivered and its effects on prostate cancer"
+  highlights={["treatment-area", "cancer-location"]}
+/>
+
+## Treatment Timeline
+
+<TreatmentTimeline 
+  title="SBRT Treatment Journey"
+  events={[
+    {
+      phase: "Consultation",
+      duration: "1-2 weeks",
+      description: "Initial evaluation and treatment planning",
+      tasks: ["Medical history review", "Imaging studies", "Treatment planning"]
+    },
+    {
+      phase: "Preparation",
+      duration: "1 week",
+      description: "Pre-treatment preparations",
+      tasks: ["Final planning", "Patient education", "Consent process"]
+    },
+    {
+      phase: "Treatment",
+      duration: "Variable",
+      description: "Active treatment delivery",
+      tasks: ["Treatment sessions", "Side effect monitoring", "Progress evaluation"]
+    },
+    {
+      phase: "Recovery",
+      duration: "2-4 weeks",
+      description: "Initial recovery period",
+      tasks: ["Symptom management", "Follow-up appointments", "Recovery monitoring"]
+    },
+    {
+      phase: "Follow-up",
+      duration: "Ongoing",
+      description: "Long-term monitoring and care",
+      tasks: ["Regular check-ups", "Surveillance imaging", "Quality of life assessment"]
+    }
+  ]}
+/>
+
+## Treatment Comparison
+
+<TreatmentComparison 
+  title="Comparing SBRT with Other Options"
+  treatments={[
+    {
+      name: "SBRT",
+      efficacy: "Update with specific efficacy data",
+      sideEffects: "Common side effects profile",
+      timeline: "Treatment duration",
+      suitability: "Best for patients who...",
+      pros: ["Advantage 1", "Advantage 2"],
+      cons: ["Consideration 1", "Consideration 2"]
+    },
+    {
+      name: "Alternative Option 1",
+      efficacy: "Comparative efficacy data",
+      sideEffects: "Side effects profile",
+      timeline: "Treatment duration",
+      suitability: "Best for patients who...",
+      pros: ["Advantage 1", "Advantage 2"],
+      cons: ["Consideration 1", "Consideration 2"]
+    },
+    {
+      name: "Alternative Option 2",
+      efficacy: "Comparative efficacy data",
+      sideEffects: "Side effects profile",
+      timeline: "Treatment duration",
+      suitability: "Best for patients who...",
+      pros: ["Advantage 1", "Advantage 2"],
+      cons: ["Consideration 1", "Consideration 2"]
+    }
+  ]}
+/>
+
+## Side Effects and Management
+
+<SideEffectsTable 
+  title="SBRT Side Effects"
+  sideEffects={[
+    {
+      name: "Common Side Effect 1",
+      frequency: "60-80%",
+      severity: "mild-moderate",
+      onset: "During treatment",
+      duration: "1-2 weeks",
+      management: "Management strategies"
+    },
+    {
+      name: "Common Side Effect 2",
+      frequency: "40-60%",
+      severity: "mild",
+      onset: "1-2 weeks",
+      duration: "2-4 weeks",
+      management: "Management strategies"
+    },
+    {
+      name: "Less Common Side Effect",
+      frequency: "10-20%",
+      severity: "moderate",
+      onset: "Variable",
+      duration: "Variable",
+      management: "Management strategies"
+    }
+  ]}
+/>
+
+## Treatment Planning Questions
+
+<QuestionGenerator 
+  title="Questions to Ask About SBRT"
+  categories={[
+    {
+      category: "Treatment Details",
+      questions: [
+        "How many treatment sessions will I need?",
+        "What can I expect during each treatment?",
+        "How will you monitor my response?",
+        "What preparation is needed?"
+      ]
+    },
+    {
+      category: "Side Effects",
+      questions: [
+        "What side effects should I expect?",
+        "How can side effects be managed?",
+        "When should I contact you about side effects?",
+        "Are there long-term effects to consider?"
+      ]
+    },
+    {
+      category: "Outcomes",
+      questions: [
+        "What are the expected outcomes?",
+        "How will we know if the treatment is working?",
+        "What happens if the treatment doesn't work?",
+        "What are the next steps after treatment?"
+      ]
+    }
+  ]}
+/>
+
+## When to Consider SBRT
+
+This treatment may be appropriate if:
+
+- Specific clinical criteria 1
+- Specific clinical criteria 2
+- Specific clinical criteria 3
+- Patient preference considerations
+
+## Preparation and Next Steps
+
+**Before Treatment:**
+- Complete pre-treatment requirements
+- Address any questions or concerns
+- Arrange support systems
+- Complete necessary preparations
+
+**During Treatment:**
+- Follow treatment schedule
+- Report side effects promptly
+- Maintain communication with care team
+- Follow care instructions
+
+**After Treatment:**
+- Attend follow-up appointments
+- Monitor for late effects
+- Continue surveillance
+- Maintain healthy lifestyle
+
+## Journey Integration
+
+This treatment fits into your overall cancer journey:
+
+- **Previous Phase**: [Link to diagnosis/planning phase]
+- **Current Phase**: Treatment and management
+- **Next Phase**: [Link to recovery/follow-up phase]
+
+<JourneyPhase 
+  currentPhase="treatment"
+  cancerType="prostate"
+  treatmentType="SBRT"
+/>
+
+---
+
+**Medical Disclaimer**: This information is for educational purposes only and should not replace professional medical advice. Always consult with your healthcare team for personalized treatment recommendations.
+
+**Last Updated**: 2025-08-17  
+**Medical Review**: Dr. Daniel Sufficool, MD - Medical Oncologist
