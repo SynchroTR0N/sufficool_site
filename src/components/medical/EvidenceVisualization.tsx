@@ -207,7 +207,7 @@ const EvidenceVisualization: React.FC<EvidenceVisualizationProps> = ({
     // Add axes
     g.append("g")
       .attr("transform", `translate(0,${height})`)
-      .call(d3.axisBottom(xScale).tickFormat(d3.timeFormat("%Y")));
+      .call(d3.axisBottom(xScale).tickFormat(d3.timeFormat("%Y") as any));
 
     g.append("g")
       .call(d3.axisLeft(yScale));

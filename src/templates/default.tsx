@@ -14,8 +14,10 @@ interface DefaultTemplateData {
   };
 }
 
-interface DefaultTemplateProps extends PageProps<DefaultTemplateData> {
-  children: React.ReactNode;
+interface DefaultTemplateProps {
+  data: DefaultTemplateData;
+  location: PageProps['location'];
+  children?: React.ReactNode;
 }
 
 const DefaultTemplate: React.FC<DefaultTemplateProps> = ({ data, location, children }) => {

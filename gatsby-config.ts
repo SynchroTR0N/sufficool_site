@@ -76,6 +76,7 @@ const config: GatsbyConfig = {
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-postcss',
+    'gatsby-plugin-react-helmet-async',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -107,7 +108,7 @@ const config: GatsbyConfig = {
           }
         `,
         resolveSiteUrl: () => 'https://drsufficool.com',
-        serialize: ({ path, pageContext }) => {
+        serialize: ({ path, pageContext }: { path: string; pageContext: any }) => {
           // Prioritize medical content for SEO
           let priority = 0.5;
           let changefreq = 'monthly';

@@ -2,76 +2,42 @@
 import type { GatsbyNode } from "gatsby";
 import path from "path";
 
-export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({ actions, stage, getConfig }) => {
+interface MdxNode {
+  id: string;
+  frontmatter: {
+    slug: string;
+    category?: string;
+    cancerType?: string;
+    cancerTypeDisplay?: string;
+    isHub?: boolean;
+    title?: string;
+  };
+  internal: {
+    contentFilePath: string;
+  };
+}
+
+interface CreatePagesQueryResult {
+  allMdx: {
+    nodes: MdxNode[];
+  };
+}
+
+export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({ 
+  actions, 
+  stage,
+  getConfig 
+}) => {
+  // TEMPORARILY DISABLED - Custom webpack config was preventing bundle generation
+  // Only add path alias for now, remove split chunks optimization
   actions.setWebpackConfig({
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "src"),
       },
     },
-    optimization: {
-      splitChunks: {
-        chunks: 'all',
-        cacheGroups: {
-          // Medical components bundle
-          medical: {
-            test: /[\\/]src[\\/]components[\\/]medical[\\/]/,
-            name: 'medical-components',
-            chunks: 'all',
-            priority: 20,
-            minSize: 20000,
-          },
-          // Three.js and D3 visualization libraries
-          visualization: {
-            test: /[\\/]node_modules[\\/](three|d3|@react-three)/,
-            name: 'visualization-libs',
-            chunks: 'all',
-            priority: 15,
-            minSize: 50000,
-          },
-          // React and core dependencies
-          vendor: {
-            test: /[\\/]node_modules[\\/](react|react-dom|gatsby)/,
-            name: 'vendor',
-            chunks: 'all',
-            priority: 10,
-            minSize: 30000,
-          },
-          // Common utilities and smaller libraries
-          commons: {
-            test: /[\\/]node_modules[\\/]/,
-            name: 'commons',
-            chunks: 'all',
-            priority: 5,
-            minSize: 20000,
-            maxSize: 250000,
-          },
-        },
-      },
-    },
+    // Removed optimization.splitChunks configuration that was conflicting with Gatsby's defaults
   });
-
-  // Production-specific optimizations
-  if (stage === 'build-javascript') {
-    const config = getConfig();
-    
-    // Optimize bundle sizes for production
-    actions.setWebpackConfig({
-      optimization: {
-        ...config.optimization,
-        usedExports: true,
-        sideEffects: false,
-        moduleIds: 'deterministic',
-        chunkIds: 'deterministic',
-        minimize: true,
-      },
-      performance: {
-        hints: 'warning',
-        maxEntrypointSize: 500000, // 500KB
-        maxAssetSize: 300000, // 300KB
-      },
-    });
-  }
 };
 
 export const createPages: GatsbyNode["createPages"] = async ({ graphql, actions, reporter }) => {
@@ -87,6 +53,9 @@ export const createPages: GatsbyNode["createPages"] = async ({ graphql, actions,
             slug
             category
             cancerType
+            cancerTypeDisplay
+            isHub
+            title
           }
           internal {
             contentFilePath
@@ -102,12 +71,12 @@ export const createPages: GatsbyNode["createPages"] = async ({ graphql, actions,
   }
 
   // Create pages for each MDX file
-  const mdxFiles = result.data?.allMdx?.nodes || [];
+  const mdxFiles = (result.data as CreatePagesQueryResult)?.allMdx?.nodes || [];
   const defaultTemplate = path.resolve(`./src/templates/default.tsx`);
   const cancerTypeHubTemplate = path.resolve(`./src/templates/cancer-type-hub.tsx`);
 
-  mdxFiles.forEach((node: any) => {
-    const { slug, category, cancerType } = node.frontmatter;
+  mdxFiles.forEach((node: MdxNode) => {
+    const { slug, category, cancerType, isHub } = node.frontmatter;
     const { contentFilePath } = node.internal;
 
     if (!slug) {
@@ -119,18 +88,20 @@ export const createPages: GatsbyNode["createPages"] = async ({ graphql, actions,
     const pagePath = `/${slug}/`;
 
     // Determine which template to use
-    const isCancerTypeIndex = category === 'cancer-type' && (slug === 'prostate' || slug === 'lung');
-    const template = isCancerTypeIndex ? cancerTypeHubTemplate : defaultTemplate;
+    const isCancerTypeHub = category === 'cancer-type' && isHub === true;
+    const template = isCancerTypeHub ? cancerTypeHubTemplate : defaultTemplate;
 
     createPage({
       path: pagePath,
       component: `${template}?__contentFilePath=${contentFilePath}`,
       context: {
         id: node.id,
+        slug: slug,
         cancerType: cancerType || null,
+        isHub: isHub || false,
       },
     });
 
-    reporter.info(`Created page: ${pagePath} using ${isCancerTypeIndex ? 'cancer-type-hub' : 'default'} template`);
+    reporter.info(`Created page: ${pagePath} using ${isCancerTypeHub ? 'cancer-type-hub' : 'default'} template`);
   });
 };

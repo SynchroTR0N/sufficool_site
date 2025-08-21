@@ -60,10 +60,10 @@ const Layout = ({ children, breadcrumbs, seoProps }: LayoutProps) => {
                   </svg>
                 </button>
                 <div className="absolute left-0 mt-2 w-64 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                  <Link to="/prostate/" className="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-t-lg">
+                  <Link to="/prostate-cancer/" className="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-t-lg">
                     Prostate Cancer
                   </Link>
-                  <Link to="/lung/" className="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-b-lg">
+                  <Link to="/lung-cancer/" className="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-b-lg">
                     Lung Cancer
                   </Link>
                 </div>
@@ -111,8 +111,8 @@ const Layout = ({ children, breadcrumbs, seoProps }: LayoutProps) => {
           {/* Mobile Navigation */}
           {mobileMenuOpen && (
             <nav className="lg:hidden py-4 border-t border-blue-500">
-              <Link to="/prostate/" className="block py-2 hover:text-blue-200">Prostate Cancer</Link>
-              <Link to="/lung/" className="block py-2 hover:text-blue-200">Lung Cancer</Link>
+              <Link to="/prostate-cancer/" className="block py-2 hover:text-blue-200">Prostate Cancer</Link>
+              <Link to="/lung-cancer/" className="block py-2 hover:text-blue-200">Lung Cancer</Link>
               <Link to="/shared/understanding-cancer/how-cancer-develops/" className="block py-2 hover:text-blue-200">Understanding Cancer</Link>
               <Link to="/shared/universal-concerns/managing-anxiety/" className="block py-2 hover:text-blue-200">Patient Resources</Link>
               <Link to="/about/dr-sufficool/" className="block py-2 hover:text-blue-200">About</Link>
@@ -186,8 +186,8 @@ const Layout = ({ children, breadcrumbs, seoProps }: LayoutProps) => {
             <div>
               <h3 className="text-lg font-semibold mb-4">Cancer Types</h3>
               <ul className="space-y-2 text-sm">
-                <li><Link to="/prostate/" className="text-gray-400 hover:text-white">Prostate Cancer</Link></li>
-                <li><Link to="/lung/" className="text-gray-400 hover:text-white">Lung Cancer</Link></li>
+                <li><Link to="/prostate-cancer/" className="text-gray-400 hover:text-white">Prostate Cancer</Link></li>
+                <li><Link to="/lung-cancer/" className="text-gray-400 hover:text-white">Lung Cancer</Link></li>
               </ul>
             </div>
 
@@ -197,8 +197,8 @@ const Layout = ({ children, breadcrumbs, seoProps }: LayoutProps) => {
               <ul className="space-y-2 text-sm">
                 <li><Link to="/shared/universal-concerns/managing-anxiety/" className="text-gray-400 hover:text-white">Managing Anxiety</Link></li>
                 <li><Link to="/shared/medical-concepts/radiation-basics/" className="text-gray-400 hover:text-white">Radiation Basics</Link></li>
-                <li><Link to="/prostate/staging/" className="text-gray-400 hover:text-white">Cancer Staging</Link></li>
-                <li><Link to="/prostate/journey/diagnosis/" className="text-gray-400 hover:text-white">Diagnosis Journey</Link></li>
+                <li><Link to="/prostate-cancer/staging/" className="text-gray-400 hover:text-white">Cancer Staging</Link></li>
+                <li><Link to="/prostate-cancer/journey/diagnosis/" className="text-gray-400 hover:text-white">Diagnosis Journey</Link></li>
               </ul>
             </div>
           </div>

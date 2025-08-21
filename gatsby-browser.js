@@ -1,54 +1,97 @@
-import './src/styles/global.css'
 import React from 'react'
-import { HelmetProvider } from 'react-helmet-async'
-import MedicalMDXProvider from './src/components/MDXProvider'
+import './src/styles/global.css'
 
-export const wrapRootElement = ({ element }) => {
-  return (
-    <HelmetProvider>
-      <MedicalMDXProvider>
-        {element}
-      </MedicalMDXProvider>
-    </HelmetProvider>
-  )
+// Phase 1: Comprehensive hydration diagnostics
+export const onClientEntry = () => {
+  console.log('🚀 Gatsby client entry point reached')
+  console.log('📊 Client environment:', {
+    userAgent: navigator.userAgent,
+    reactVersion: require('react').version,
+    gatsbyVersion: require('gatsby/package.json').version,
+    nodeEnv: process.env.NODE_ENV
+  })
 }
 
-// Medical content protection and security
-export const onClientEntry = () => {
-  // Prevent right-click on sensitive medical content
-  if (typeof window !== 'undefined') {
-    // Add medical disclaimer notice
-    console.info(
-      '%cMedical Education Platform\n%cThis platform provides educational information only.\nNot intended as medical advice.\nConsult healthcare providers for medical decisions.',
-      'font-weight: bold; color: #0066cc; font-size: 16px;',
-      'color: #333; font-size: 12px;'
-    );
-    
-    // Security monitoring for medical content
-    window.addEventListener('beforeunload', () => {
-      // Clear any sensitive data from memory
-      if (window.sessionStorage) {
-        // Don't clear educational content, but ensure no PHI is stored
-        const keysToCheck = Object.keys(sessionStorage);
-        keysToCheck.forEach(key => {
-          if (key.includes('patient') || key.includes('medical-record')) {
-            sessionStorage.removeItem(key);
-          }
-        });
-      }
-    });
+export const onInitialClientRender = () => {
+  console.log('✅ Gatsby initial client render completed')
+  
+  // Check if React root exists and has content
+  const gatsbyDiv = document.getElementById('___gatsby')
+  if (gatsbyDiv) {
+    console.log('📦 Gatsby root element found:', {
+      hasChildren: gatsbyDiv.children.length > 0,
+      innerHTML: gatsbyDiv.innerHTML.substring(0, 200) + (gatsbyDiv.innerHTML.length > 200 ? '...' : ''),
+      childCount: gatsbyDiv.children.length
+    })
+  } else {
+    console.error('❌ Gatsby root element not found!')
   }
 }
 
-// Enhance page rendering for medical content
-export const wrapPageElement = ({ element, props }) => {
-  // Add medical content context
-  return React.cloneElement(element, {
-    ...props,
-    medicalContext: {
-      isEducational: true,
-      requiresDisclaimer: true,
-      specialty: 'Radiation Oncology'
+export const onRouteUpdate = ({ location, prevLocation }) => {
+  console.log('🧭 Route update:', {
+    from: prevLocation?.pathname || 'initial',
+    to: location.pathname
+  })
+}
+
+// Enhanced error boundary for hydration issues
+export const wrapRootElement = ({ element }) => {
+  console.log('🔧 wrapRootElement called')
+  
+  return (
+    <HydrationErrorBoundary>
+      {element}
+    </HydrationErrorBoundary>
+  )
+}
+
+// React Error Boundary for hydration debugging
+class HydrationErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { hasError: false, error: null, errorInfo: null }
+  }
+
+  static getDerivedStateFromError(error) {
+    console.error('🚨 Error boundary caught error:', error)
+    return { hasError: true }
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error('🔍 Detailed error info:', {
+      error: error.toString(),
+      errorInfo,
+      stack: error.stack,
+      componentStack: errorInfo.componentStack
+    })
+    
+    // Check for hydration-specific errors
+    if (error.message.includes('hydrat') || error.message.includes('server') || error.message.includes('client')) {
+      console.error('🌊 HYDRATION ERROR DETECTED:', error.message)
     }
-  });
+    
+    this.setState({
+      error,
+      errorInfo
+    })
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{ padding: '20px', background: '#fee', border: '1px solid #fcc' }}>
+          <h2>🚨 Application Error Detected</h2>
+          <p>Error: {this.state.error && this.state.error.toString()}</p>
+          <details style={{ whiteSpace: 'pre-wrap', marginTop: '10px' }}>
+            <summary>Error Details</summary>
+            {this.state.error && this.state.error.stack}
+            {this.state.errorInfo.componentStack}
+          </details>
+        </div>
+      )
+    }
+
+    return this.props.children
+  }
 }

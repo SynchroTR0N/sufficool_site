@@ -1,21 +1,60 @@
-@import "tailwindcss";
-@config "../../tailwind.config.js";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-@theme {
-  --color-medical-primary: #0066cc;
-  --color-medical-secondary: #00aa88;
-  --color-medical-accent: #ff6b6b;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer base {
+  :root {
+    /* Primary Medical Brand Colors */
+    --color-medical-primary: #4F6BDE;
+    --color-medical-primary-light: #7B8FE8;
+    --color-medical-primary-dark: #3D52C7;
+    
+    /* Secondary Medical Colors */
+    --color-medical-secondary: #10B981;
+    --color-medical-secondary-light: #34D399;
+    --color-medical-secondary-dark: #059669;
+    
+    /* Accent Colors */
+    --color-medical-accent: #F59E0B;
+    --color-medical-accent-light: #FCD34D;
+    --color-medical-accent-dark: #D97706;
+    
+    /* Specialized Medical Colors */
+    --color-medical-prostate: #4A90E2;
+    --color-medical-lung: #16A085;
+    --color-medical-gynecologic: #9B59B6;
+    --color-medical-gi: #E67E22;
+    
+    /* Neutral Medical Palette */
+    --color-medical-gray-50: #F8FAFC;
+    --color-medical-gray-100: #F1F5F9;
+    --color-medical-gray-200: #E2E8F0;
+    --color-medical-gray-300: #CBD5E1;
+    --color-medical-gray-400: #94A3B8;
+    --color-medical-gray-500: #64748B;
+    --color-medical-gray-600: #475569;
+    --color-medical-gray-700: #334155;
+    --color-medical-gray-800: #1E293B;
+    --color-medical-gray-900: #0F172A;
+    
+    /* Semantic Colors */
+    --color-medical-success: #10B981;
+    --color-medical-warning: #F59E0B;
+    --color-medical-error: #EF4444;
+    --color-medical-info: #3B82F6;
+  }
+  
   body {
     @apply antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply px-4 py-2 bg-medical-primary text-white rounded-lg hover:bg-blue-700 transition-colors;
+    @apply px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors;
   }
   
   .card {

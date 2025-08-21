@@ -54,17 +54,19 @@ const formatAuthors = (authors: any[]): string => {
 
 // Helper function to generate citation
 const generateCitation = (citation: any, format: CitationFormat = 'APA'): string => {
+  if (!citation) return 'Citation not available';
+  
   const authorsStr = formatAuthors(citation.authors);
   
   switch (format) {
     case 'APA':
-      return `${authorsStr} (${citation.year}). ${citation.title}. ${citation.journal || 'Unknown Journal'}${citation.volume ? `, ${citation.volume}` : ''}${citation.pages ? `, ${citation.pages}` : ''}. ${citation.doi ? `https://doi.org/${citation.doi}` : ''}`;
+      return `${authorsStr} (${citation.year || 'N/A'}). ${citation.title || 'Untitled'}. ${citation.journal || 'Unknown Journal'}${citation.volume ? `, ${citation.volume}` : ''}${citation.pages ? `, ${citation.pages}` : ''}. ${citation.doi ? `https://doi.org/${citation.doi}` : ''}`;
     
     case 'Vancouver':
-      return `${authorsStr} ${citation.title}. ${citation.journal || 'Unknown Journal'}. ${citation.year}${citation.volume ? `;${citation.volume}` : ''}${citation.issue ? `(${citation.issue})` : ''}${citation.pages ? `:${citation.pages}` : ''}. ${citation.doi ? `doi: ${citation.doi}` : ''}`;
+      return `${authorsStr} ${citation.title || 'Untitled'}. ${citation.journal || 'Unknown Journal'}. ${citation.year || 'N/A'}${citation.volume ? `;${citation.volume}` : ''}${citation.issue ? `(${citation.issue})` : ''}${citation.pages ? `:${citation.pages}` : ''}. ${citation.doi ? `doi: ${citation.doi}` : ''}`;
     
     default:
-      return `${authorsStr} (${citation.year}). ${citation.title}. ${citation.journal || 'Unknown Journal'}.`;
+      return `${authorsStr} (${citation.year || 'N/A'}). ${citation.title || 'Untitled'}. ${citation.journal || 'Unknown Journal'}.`;
   }
 };
 
@@ -127,9 +129,9 @@ const Evidence: React.FC<EvidenceProps> = ({
                     Level {evidenceLevel}
                   </span>
                   <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 border border-gray-200 capitalize">
-                    {type.replace('-', ' ')}
+                    {type?.replace('-', ' ') || 'Study'}
                   </span>
-                  {citation.year && (
+                  {citation?.year && (
                     <span className="text-sm text-gray-500">
                       {citation.year}
                     </span>
@@ -352,7 +354,7 @@ const Evidence: React.FC<EvidenceProps> = ({
               
               {/* Links */}
               <div className="flex items-center space-x-4 mt-3">
-                {citation.pmid && (
+                {citation?.pmid && (
                   <a
                     href={`https://pubmed.ncbi.nlm.nih.gov/${citation.pmid}/`}
                     target="_blank"
@@ -363,7 +365,7 @@ const Evidence: React.FC<EvidenceProps> = ({
                     PubMed
                   </a>
                 )}
-                {citation.doi && (
+                {citation?.doi && (
                   <a
                     href={`https://doi.org/${citation.doi}`}
                     target="_blank"
@@ -374,7 +376,7 @@ const Evidence: React.FC<EvidenceProps> = ({
                     DOI
                   </a>
                 )}
-                {citation.pmc && (
+                {citation?.pmc && (
                   <a
                     href={`https://www.ncbi.nlm.nih.gov/pmc/articles/${citation.pmc}/`}
                     target="_blank"

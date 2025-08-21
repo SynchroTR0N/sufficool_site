@@ -59,6 +59,9 @@ const DoseDistribution: React.FC<DoseDistributionProps> = ({
   const [selectedOrgan, setSelectedOrgan] = useState<string | null>(null);
   const [currentSlice, setCurrentSlice] = useState(0);
   const [doseOpacity, setDoseOpacity] = useState(0.7);
+  const [currentView, setView] = useState<'2d' | '3d'>(view);
+  const [currentShowIsodoses, setShowIsodoses] = useState(showIsodoses);
+  const [currentShowDVH, setShowDVH] = useState(showDVH);
 
   const width = 400;
   const height = 400;
@@ -117,7 +120,7 @@ const DoseDistribution: React.FC<DoseDistributionProps> = ({
 
   // Render 2D dose distribution
   useEffect(() => {
-    if (!svgRef.current || view !== '2d') return;
+    if (!svgRef.current || currentView !== '2d') return;
 
     const svg = d3.select(svgRef.current);
     svg.selectAll("*").remove();
@@ -154,7 +157,7 @@ const DoseDistribution: React.FC<DoseDistributionProps> = ({
       .attr("opacity", doseOpacity);
 
     // Draw isodose lines if enabled
-    if (showIsodoses) {
+    if (currentShowIsodoses) {
       isodoseLevels.forEach(level => {
         const contourData = currentSliceData.filter(d => 
           Math.abs(d.dose - level.dose) <= level.dose * 0.05
@@ -196,11 +199,11 @@ const DoseDistribution: React.FC<DoseDistributionProps> = ({
       .style("fill", "black")
       .text("Y (mm)");
 
-  }, [currentSliceData, xScale, yScale, doseColorScale, doseOpacity, showIsodoses, isodoseLevels, view]);
+  }, [currentSliceData, doseColorScale, doseOpacity, currentShowIsodoses, isodoseLevels, currentView]);
 
   // Render Dose-Volume Histogram
   useEffect(() => {
-    if (!dvhRef.current || !showDVH) return;
+    if (!dvhRef.current || !currentShowDVH) return;
 
     const svg = d3.select(dvhRef.current);
     svg.selectAll("*").remove();
@@ -279,7 +282,7 @@ const DoseDistribution: React.FC<DoseDistributionProps> = ({
       .style("fill", "black")
       .text("Volume (%)");
 
-  }, [doseVolumeData, organs, maxDose, prescriptionDose, selectedOrgan, showDVH]);
+  }, [doseVolumeData, organs, maxDose, prescriptionDose, selectedOrgan, currentShowDVH]);
 
   const maxSlice = Math.max(...dosePoints.map(p => p.z));
   const minSlice = Math.min(...dosePoints.map(p => p.z));
@@ -313,10 +316,10 @@ const DoseDistribution: React.FC<DoseDistributionProps> = ({
           {/* View Controls */}
           <div className="flex items-center space-x-2">
             <button
-              onClick={() => setView(view === '2d' ? '3d' : '2d')}
+              onClick={() => setView(currentView === '2d' ? '3d' : '2d')}
               className="px-3 py-1 bg-gray-100 text-gray-700 rounded text-sm hover:bg-gray-200 transition-colors"
             >
-              {view === '2d' ? '3D View' : '2D View'}
+              {currentView === '2d' ? '3D View' : '2D View'}
             </button>
           </div>
         </div>
@@ -373,7 +376,7 @@ const DoseDistribution: React.FC<DoseDistributionProps> = ({
           </div>
 
           {/* Dose-Volume Histogram */}
-          {showDVH && (
+          {currentShowDVH && (
             <div>
               <h4 className="text-lg font-semibold text-gray-800 mb-4">Dose-Volume Histogram</h4>
               <svg
@@ -466,7 +469,7 @@ const DoseDistribution: React.FC<DoseDistributionProps> = ({
             <label className="flex items-center space-x-2">
               <input
                 type="checkbox"
-                checked={showIsodoses}
+                checked={currentShowIsodoses}
                 onChange={(e) => setShowIsodoses(e.target.checked)}
                 className="text-blue-600"
               />
@@ -475,7 +478,7 @@ const DoseDistribution: React.FC<DoseDistributionProps> = ({
             <label className="flex items-center space-x-2">
               <input
                 type="checkbox"
-                checked={showDVH}
+                checked={currentShowDVH}
                 onChange={(e) => setShowDVH(e.target.checked)}
                 className="text-blue-600"
               />

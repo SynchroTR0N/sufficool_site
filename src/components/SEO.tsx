@@ -122,7 +122,7 @@ const SEO: React.FC<SEOProps> = ({
       author: {
         '@type': 'Person',
         name: seo.author,
-        jobTitle: 'Medical Oncologist',
+        jobTitle: 'Radiation Oncologist',
         affiliation: {
           '@type': 'Organization',
           name: 'Sufficool Medical Education',
@@ -185,7 +185,7 @@ const SEO: React.FC<SEOProps> = ({
         reviewedBy: {
           '@type': 'Person',
           name: 'Dr. Daniel Sufficool',
-          jobTitle: 'Medical Oncologist',
+          jobTitle: 'Radiation Oncologist',
           worksFor: {
             '@type': 'Organization',
             name: 'Sufficool Medical Education',
@@ -280,12 +280,12 @@ const SEO: React.FC<SEOProps> = ({
             founder: {
               '@type': 'Person',
               name: 'Dr. Daniel Sufficool',
-              jobTitle: 'Medical Oncologist',
+              jobTitle: 'Radiation Oncologist',
             },
             medicalSpecialty: [
               {
                 '@type': 'MedicalSpecialty',
-                name: 'Medical Oncology',
+                name: 'Radiation Oncology',
               },
               {
                 '@type': 'MedicalSpecialty',

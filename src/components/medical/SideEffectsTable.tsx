@@ -44,7 +44,7 @@ const SideEffectsTable: React.FC<SideEffectsTableProps> = ({
   cancerType,
   treatments,
   sideEffects,
-  selectedTreatments = treatments.map(t => t.id),
+  selectedTreatments = treatments?.map(t => t.id) || [],
   filterCategory = 'all',
   filterSeverity = 'all',
   sortBy = 'frequency',

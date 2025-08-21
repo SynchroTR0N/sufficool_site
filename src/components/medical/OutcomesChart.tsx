@@ -66,6 +66,7 @@ const OutcomesChart: React.FC<OutcomesChartProps> = ({
   const svgRef = useRef<SVGSVGElement>(null);
   const [hoveredBar, setHoveredBar] = useState<string | null>(null);
   const [viewType, setViewType] = useState<'absolute' | 'relative'>('absolute');
+  const [currentChartType, setChartType] = useState<'bar' | 'line' | 'forest'>(chartType);
 
   const width = 600;
   const height = 400;
@@ -106,7 +107,7 @@ const OutcomesChart: React.FC<OutcomesChartProps> = ({
     const g = svg.append("g")
       .attr("transform", `translate(${margin.left},${margin.top})`);
 
-    if (chartType === 'bar') {
+    if (currentChartType === 'bar') {
       const xScale = d3.scaleBand()
         .domain(chartData.map(d => d.treatmentName))
         .range([0, innerWidth])
@@ -210,7 +211,7 @@ const OutcomesChart: React.FC<OutcomesChartProps> = ({
         .text(`${currentMetric.name} (${currentMetric.unit})`);
     }
 
-  }, [chartData, currentMetric, showConfidenceIntervals, chartType, width, height, margin]);
+  }, [chartData, currentMetric, showConfidenceIntervals, currentChartType, width, height, margin]);
 
   const toggleTreatment = (treatmentId: string) => {
     onTreatmentToggle?.(treatmentId);
@@ -256,7 +257,7 @@ const OutcomesChart: React.FC<OutcomesChartProps> = ({
             <div className="flex items-center space-x-2">
               <label className="text-sm font-medium text-gray-700">Chart Type:</label>
               <select
-                value={chartType}
+                value={currentChartType}
                 onChange={(e) => setChartType(e.target.value as 'bar' | 'line' | 'forest')}
                 className="border border-gray-300 rounded-md px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
               >

@@ -1,0 +1,273 @@
+
+import * as React from "react"
+import type { HeadFC, PageProps } from "gatsby"
+import { Link } from "gatsby"
+import Layout from "@/components/Layout";
+
+const IndexPage: React.FC<PageProps> = ({ location }) => {
+  const seoProps = {
+    title: "Evidence-Based Cancer Treatment Education",
+    description: "Comprehensive, evidence-based cancer treatment information with interactive tools and patient resources by Dr. Daniel Sufficool, Radiation Oncologist.",
+    url: location.pathname,
+    type: 'website' as const,
+    isMedicalContent: true,
+    keywords: [
+      'cancer treatment',
+      'radiation oncology',
+      'evidence-based medicine',
+      'patient education',
+      'cancer care',
+      'oncology resources',
+    ],
+  };
+
+  const cancerTypes = [
+    {
+      name: "Prostate Cancer",
+      description: "Comprehensive treatment guidance for prostate cancer patients and families",
+      path: "/prostate/",
+      icon: "🎯",
+      features: ["Treatment options", "Patient journey", "Decision tools"]
+    },
+    {
+      name: "Lung Cancer",
+      description: "Evidence-based information for lung cancer diagnosis and treatment",
+      path: "/lung/",
+      icon: "🫁",
+      features: ["Staging guide", "Treatment comparison", "Support resources"]
+    }
+  ];
+
+  const patientResources = [
+    {
+      title: "Understanding Cancer",
+      description: "Learn how cancer develops and spreads",
+      path: "/shared/understanding-cancer/how-cancer-develops/",
+      icon: "📚"
+    },
+    {
+      title: "Managing Anxiety",
+      description: "Tools and strategies for cancer-related anxiety",
+      path: "/shared/universal-concerns/managing-anxiety/",
+      icon: "🧠"
+    },
+    {
+      title: "Radiation Basics",
+      description: "Understanding radiation therapy and its effects",
+      path: "/shared/medical-concepts/radiation-basics/",
+      icon: "⚛️"
+    }
+  ];
+
+  return (
+    <Layout seoProps={seoProps}>
+      {/* Hero Section */}
+      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 -mx-4 px-4 py-12 mb-12 rounded-lg">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Evidence-Based Cancer Treatment Education
+          </h1>
+          <p className="text-xl text-gray-700 mb-8 max-w-3xl mx-auto">
+            Comprehensive, up-to-date cancer treatment information with interactive tools and patient resources 
+            by <strong>Dr. Daniel Sufficool</strong>, Radiation Oncologist.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link 
+              to="/prostate/" 
+              className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
+            >
+              Explore Prostate Cancer Guide
+            </Link>
+            <Link 
+              to="/about/dr-sufficool/" 
+              className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold border-2 border-blue-600 hover:bg-blue-50 transition"
+            >
+              About Dr. Sufficool
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Featured Cancer Types */}
+      <section className="mb-12">
+        <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+          Cancer Treatment Guides
+        </h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          {cancerTypes.map((cancer, index) => (
+            <div key={index} className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition">
+              <div className="flex items-start space-x-4">
+                <div className="text-3xl">{cancer.icon}</div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{cancer.name}</h3>
+                  <p className="text-gray-600 mb-4">{cancer.description}</p>
+                  <ul className="text-sm text-gray-500 mb-4">
+                    {cancer.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-center space-x-2">
+                        <span className="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link 
+                    to={cancer.path}
+                    className="text-blue-600 font-semibold hover:text-blue-700 transition"
+                  >
+                    Learn more →
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Patient Resources */}
+      <section className="mb-12">
+        <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+          Patient Resources
+        </h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          {patientResources.map((resource, index) => (
+            <Link 
+              key={index}
+              to={resource.path}
+              className="bg-gray-50 border border-gray-200 rounded-lg p-6 hover:shadow-md transition group"
+            >
+              <div className="text-2xl mb-3">{resource.icon}</div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition">
+                {resource.title}
+              </h3>
+              <p className="text-gray-600 text-sm">{resource.description}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* What Makes This Different */}
+      <section className="mb-12 bg-gray-50 -mx-4 px-4 py-8 rounded-lg">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+            What Makes This Platform Different
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Evidence-Based Content</h3>
+              <p className="text-gray-600">
+                All medical information is backed by current research and clinical evidence, 
+                with citations and evidence levels clearly marked.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Interactive Tools</h3>
+              <p className="text-gray-600">
+                Decision trees, risk calculators, and patient journey guides help you 
+                understand your options and prepare for appointments.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Progressive Disclosure</h3>
+              <p className="text-gray-600">
+                Content adapts from essential patient-friendly information to detailed 
+                technical explanations based on your needs.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Patient-Centered</h3>
+              <p className="text-gray-600">
+                Designed around the patient journey, from diagnosis through treatment 
+                and recovery, with personalized guidance.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Search Section */}
+      <section className="mb-12 bg-blue-50 -mx-4 px-4 py-8 rounded-lg">
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            Find Information Quickly
+          </h2>
+          <p className="text-gray-600 mb-6">
+            Search for cancer types, treatments, side effects, or patient resources
+          </p>
+          <div className="relative">
+            <input
+              type="search"
+              placeholder="Search cancer treatments, side effects, patient guides..."
+              className="w-full px-4 py-3 pl-12 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900"
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  const searchTerm = (e.target as HTMLInputElement).value.toLowerCase();
+                  if (searchTerm.includes('prostate')) {
+                    window.location.href = '/prostate/';
+                  } else if (searchTerm.includes('lung')) {
+                    window.location.href = '/lung/';
+                  } else if (searchTerm.includes('anxiety') || searchTerm.includes('stress')) {
+                    window.location.href = '/shared/universal-concerns/managing-anxiety/';
+                  } else if (searchTerm.includes('radiation')) {
+                    window.location.href = '/shared/medical-concepts/radiation-basics/';
+                  } else if (searchTerm.includes('staging') || searchTerm.includes('stage')) {
+                    window.location.href = '/prostate/staging/';
+                  } else if (searchTerm.includes('diagnosis')) {
+                    window.location.href = '/prostate/journey/diagnosis/';
+                  } else {
+                    // Default to prostate cancer guide for any cancer-related search
+                    window.location.href = '/prostate/';
+                  }
+                }
+              }}
+            />
+            <svg 
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+          <p className="text-sm text-gray-500 mt-3">
+            Try searching: "prostate cancer", "radiation therapy", "managing anxiety", "diagnosis journey"
+          </p>
+        </div>
+      </section>
+
+      {/* Quick Links */}
+      <section className="mb-12">
+        <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+          Quick Access
+        </h2>
+        <div className="flex flex-wrap justify-center gap-4">
+          <Link to="/prostate/staging/" className="bg-blue-100 text-blue-800 px-4 py-2 rounded-lg hover:bg-blue-200 transition">
+            Cancer Staging Guide
+          </Link>
+          <Link to="/prostate/journey/diagnosis/" className="bg-green-100 text-green-800 px-4 py-2 rounded-lg hover:bg-green-200 transition">
+            Diagnosis Journey
+          </Link>
+          <Link to="/about/using-this-site/" className="bg-purple-100 text-purple-800 px-4 py-2 rounded-lg hover:bg-purple-200 transition">
+            How to Use This Site
+          </Link>
+          <Link to="/about/contact/" className="bg-gray-100 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-200 transition">
+            Contact Dr. Sufficool
+          </Link>
+        </div>
+      </section>
+
+      {/* Medical Disclaimer */}
+      <div className="bg-amber-50 border border-amber-200 rounded-lg p-6 text-center">
+        <p className="text-amber-800 text-sm">
+          <strong>Medical Disclaimer:</strong> This information is for educational purposes only and is not a substitute 
+          for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other 
+          qualified health provider with any questions you may have regarding a medical condition.
+        </p>
+      </div>
+    </Layout>
+  )
+}
+
+export default IndexPage
+
+// Head component is no longer needed since SEO is handled by the SEO component in Layout
+

@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { graphql, HeadFC, PageProps, Link } from 'gatsby';
-import Layout from '@/components/Layout';
+import BaseLayout from '@/components/layout/BaseLayout';
+import Breadcrumb from '@/components/navigation/Breadcrumb';
+import Sidebar from '@/components/navigation/Sidebar';
+import ArticleCard from '@/components/cards/ArticleCard';
 
 interface CancerTypeHubData {
   mdx: {
@@ -28,11 +31,13 @@ interface CancerTypeHubData {
   };
 }
 
-interface CancerTypeHubProps extends PageProps<CancerTypeHubData> {
-  children: React.ReactNode;
+interface CancerTypeHubProps {
+  data: CancerTypeHubData;
+  location: PageProps['location'];
+  children?: React.ReactNode;
 }
 
-const CancerTypeHub: React.FC<CancerTypeHubProps> = ({ data, children }) => {
+const CancerTypeHub: React.FC<CancerTypeHubProps> = ({ data, children, location }) => {
   const { frontmatter } = data.mdx;
   const cancerType = frontmatter.cancerType || 'cancer';
   
@@ -52,202 +57,136 @@ const CancerTypeHub: React.FC<CancerTypeHubProps> = ({ data, children }) => {
     page.frontmatter.medicalTopic !== 'staging'
   );
 
-  const breadcrumbs = [
-    { label: 'Cancer Types', path: undefined },
-    { label: frontmatter.title, path: undefined }
+  // Create sidebar links
+  const sidebarLinks = [
+    ...journeyPages.map(page => ({
+      title: page.frontmatter.title,
+      href: `/${page.frontmatter.slug}/`,
+      active: false
+    })),
+    ...stagingPages.map(page => ({
+      title: page.frontmatter.title,
+      href: `/${page.frontmatter.slug}/`,
+      active: false
+    })),
+    ...treatmentPages.map(page => ({
+      title: page.frontmatter.title,
+      href: `/${page.frontmatter.slug}/`,
+      active: false
+    })),
+    ...otherPages.map(page => ({
+      title: page.frontmatter.title,
+      href: `/${page.frontmatter.slug}/`,
+      active: false
+    }))
+  ];
+
+  const breadcrumbItems = [
+    { label: 'Home', path: '/' },
+    { label: frontmatter.title }
+  ];
+
+  const seoProps = {
+    title: frontmatter.title,
+    description: frontmatter.description,
+    url: location.pathname,
+    type: 'website' as const,
+    isMedicalContent: true,
+    cancerType: frontmatter.cancerType,
+    category: frontmatter.category
+  };
+
+  // Sample articles for now - in real implementation, these would come from GraphQL
+  const articles = [
+    {
+      number: "01",
+      title: `Understanding ${frontmatter.title}`,
+      description: `Learn about the basics, how it develops, and key terminology for ${frontmatter.title.toLowerCase()}.`,
+      readTime: "15 min",
+      href: `/${cancerType}/understanding-${cancerType}/`
+    },
+    {
+      number: "02", 
+      title: "Diagnosis and Staging",
+      description: "Understanding the diagnostic process, staging systems, and what the results mean.",
+      readTime: "20 min",
+      href: `/${cancerType}/diagnosis-staging/`
+    },
+    {
+      number: "03",
+      title: "Treatment Options Overview",
+      description: "Comprehensive overview of available treatment options and how they work.",
+      readTime: "25 min", 
+      href: `/${cancerType}/treatment-options/`
+    },
+    {
+      number: "04",
+      title: "Managing Side Effects",
+      description: "Practical strategies for managing common treatment side effects and improving quality of life.",
+      readTime: "18 min",
+      href: `/${cancerType}/side-effects/`
+    }
   ];
 
   return (
-    <Layout breadcrumbs={breadcrumbs}>
-      <div className="max-w-7xl mx-auto">
-        {/* Hero Section */}
-        <section className="mb-12">
-          <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-8 mb-8">
-            <div className="max-w-4xl">
-              <div className="flex items-center mb-4">
-                <div className="w-3 h-8 bg-blue-600 rounded-full mr-4"></div>
-                <span className="text-blue-600 font-medium uppercase tracking-wide text-sm">
-                  {frontmatter.category} • {frontmatter.cancerType} cancer
-                </span>
-              </div>
-              <h1 className="text-5xl font-bold text-gray-900 mb-4">
-                {frontmatter.title}
-              </h1>
-              {frontmatter.description && (
-                <p className="text-xl text-gray-700 leading-relaxed mb-6">
-                  {frontmatter.description}
-                </p>
-              )}
-              <div className="flex flex-wrap gap-4">
-                <Link 
-                  to={`/${cancerType}/staging/`}
-                  className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-medium"
-                >
-                  Understanding Your Diagnosis
-                </Link>
-                <Link 
-                  to={`/${cancerType}/journey/diagnosis/`}
-                  className="bg-white text-blue-600 border-2 border-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 transition font-medium"
-                >
-                  Start Your Journey
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Main Content */}
-        <div className="grid lg:grid-cols-3 gap-8">
-          {/* Main Content */}
-          <div className="lg:col-span-2">
-            <div className="prose prose-lg prose-medical max-w-none">
-              {children}
-            </div>
-          </div>
-
-          {/* Sidebar Navigation */}
-          <div className="lg:col-span-1">
-            <div className="bg-gray-50 rounded-xl p-6 sticky top-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Navigate Your Journey</h2>
-              
-              {/* Quick Actions */}
-              <div className="mb-8">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
-                <div className="space-y-3">
-                  <Link 
-                    to={`/${cancerType}/decision-guide/`}
-                    className="block p-4 bg-white rounded-lg border border-gray-200 hover:border-blue-300 hover:shadow-md transition"
-                  >
-                    <div className="font-medium text-gray-900">Decision Guide</div>
-                    <div className="text-sm text-gray-600">Interactive treatment comparison</div>
-                  </Link>
-                  <Link 
-                    to={`/${cancerType}/calculators/`}
-                    className="block p-4 bg-white rounded-lg border border-gray-200 hover:border-blue-300 hover:shadow-md transition"
-                  >
-                    <div className="font-medium text-gray-900">Risk Calculators</div>
-                    <div className="text-sm text-gray-600">Personalized risk assessment</div>
-                  </Link>
-                  <Link 
-                    to={`/${cancerType}/questions-generator/`}
-                    className="block p-4 bg-white rounded-lg border border-gray-200 hover:border-blue-300 hover:shadow-md transition"
-                  >
-                    <div className="font-medium text-gray-900">Questions for Doctor</div>
-                    <div className="text-sm text-gray-600">Prepare for appointments</div>
-                  </Link>
-                </div>
-              </div>
-
-              {/* Journey Phases */}
-              {journeyPages.length > 0 && (
-                <div className="mb-8">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Patient Journey</h3>
-                  <div className="space-y-2">
-                    {journeyPages.map(page => (
-                      <Link 
-                        key={page.id}
-                        to={`/${page.frontmatter.slug}/`}
-                        className="block p-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition"
-                      >
-                        {page.frontmatter.title}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Understanding Your Cancer */}
-              {stagingPages.length > 0 && (
-                <div className="mb-8">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Understanding Your Cancer</h3>
-                  <div className="space-y-2">
-                    {stagingPages.map(page => (
-                      <Link 
-                        key={page.id}
-                        to={`/${page.frontmatter.slug}/`}
-                        className="block p-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition"
-                      >
-                        {page.frontmatter.title}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Treatment Options */}
-              {treatmentPages.length > 0 && (
-                <div className="mb-8">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Treatment Options</h3>
-                  <div className="space-y-2">
-                    {treatmentPages.map(page => (
-                      <Link 
-                        key={page.id}
-                        to={`/${page.frontmatter.slug}/`}
-                        className="block p-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition"
-                      >
-                        {page.frontmatter.title}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Additional Resources */}
-              {otherPages.length > 0 && (
-                <div className="mb-8">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Additional Resources</h3>
-                  <div className="space-y-2">
-                    {otherPages.map(page => (
-                      <Link 
-                        key={page.id}
-                        to={`/${page.frontmatter.slug}/`}
-                        className="block p-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition"
-                      >
-                        {page.frontmatter.title}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Support Resources */}
-              <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Support Resources</h3>
-                <div className="space-y-2">
-                  <Link 
-                    to="/shared/universal-concerns/managing-anxiety/"
-                    className="block p-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition"
-                  >
-                    Managing Anxiety
-                  </Link>
-                  <Link 
-                    to="/shared/understanding-cancer/how-cancer-develops/"
-                    className="block p-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition"
-                  >
-                    How Cancer Develops
-                  </Link>
-                  <Link 
-                    to="/about/using-this-site/"
-                    className="block p-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition"
-                  >
-                    How to Use This Site
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
+    <BaseLayout seoProps={seoProps}>
+      <Breadcrumb items={breadcrumbItems} />
+      
+      {/* Page Header */}
+      <div className="mb-12">
+        <div className="flex items-center mb-4">
+          <div className="w-3 h-8 bg-blue-600 rounded-full mr-4"></div>
+          <span className="text-blue-600 font-medium uppercase tracking-wide text-sm">
+            {frontmatter.category} • {frontmatter.cancerType} Cancer
+          </span>
         </div>
-
-        {/* Last Updated */}
-        {frontmatter.lastUpdated && (
-          <div className="mt-12 pt-8 border-t border-gray-200">
-            <p className="text-sm text-gray-500">
-              Last updated: {new Date(frontmatter.lastUpdated).toLocaleDateString()}
-            </p>
-          </div>
+        <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          {frontmatter.title}
+        </h1>
+        {frontmatter.description && (
+          <p className="text-xl text-gray-700 leading-relaxed max-w-4xl">
+            {frontmatter.description}
+          </p>
         )}
       </div>
-    </Layout>
+
+      {/* Content Wrapper */}
+      <div className="flex gap-8">
+        {/* Sidebar */}
+        {sidebarLinks.length > 0 && (
+          <Sidebar 
+            title="Articles in this Section" 
+            links={sidebarLinks}
+          />
+        )}
+
+        {/* Main Content */}
+        <div className="flex-1">
+          {/* Article Grid */}
+          <div className="grid gap-6 mb-12">
+            {articles.map((article, index) => (
+              <ArticleCard key={index} {...article} />
+            ))}
+          </div>
+
+          {/* MDX Content */}
+          {children && (
+            <div className="prose prose-lg max-w-none mb-12">
+              {children}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Last Updated */}
+      {frontmatter.lastUpdated && (
+        <div className="mt-12 pt-8 border-t border-gray-200">
+          <p className="text-sm text-gray-500">
+            Last updated: {new Date(frontmatter.lastUpdated).toLocaleDateString()}
+          </p>
+        </div>
+      )}
+    </BaseLayout>
   );
 };
 
